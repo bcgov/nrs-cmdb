@@ -39,7 +39,7 @@ With that in place, we'd like to increase the value of the properties by:
 
 ## Tech Stack
 
-We are just getting started on this project. At this point, the only decision made so far is to assume that we'll use the graph database [OrientDB](http://orientdb.com/) as the persistence layer. During the initial sprint of this project, we're doing some technical spikes aimed at determining a good language/framework to use for the API layer (and possibly other layers). Good candidates include Django (python), Java (the language of choice at NRS) and the [Sailjs](http://sailsjs.com/) Framework (JavaScript).
+We are just getting started on this project. At this point, the only decision made so far is to assume (or now, at least) that we'll be using the graph database [OrientDB](http://orientdb.com/) as the persistence layer. During the initial sprint of this project, we're doing some technical spikes aimed at determining a good language/framework to use for the API layer (and possibly other layers). Good candidates include Django (python), Java (the language of choice at NRS) and the [Sailjs](http://sailsjs.com/) Framework (JavaScript).
 
 ## Project Tracking
 
