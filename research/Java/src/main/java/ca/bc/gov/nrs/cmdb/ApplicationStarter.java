@@ -1,9 +1,10 @@
 package ca.bc.gov.nrs.cmdb;
 
-import ca.bc.gov.nrs.cmdb.repository.ApplicationRepository;
+
 
 
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
+import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,14 +26,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAutoConfiguration
 @EnableTransactionManagement
 @ComponentScan("ca.bc.gov.nrs.cmdb")
-@EnableOrientRepositories("ca.bc.gov.nrs.cmdb.repository")
+
 public class ApplicationStarter implements CommandLineRunner {
 
-//    @Autowired
-//    private ApplicationRepository applicationRepository;
+
 
     @Autowired
-    private OrientObjectDatabaseFactory factory;
+    private com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory;
 
     
     public static void main(final String[] args) throws Exception {
@@ -94,9 +94,10 @@ public class ApplicationStarter implements CommandLineRunner {
     }
 
 */
-  
+
     @Override
     public void run(String... args) throws Exception {
+        /*
         OObjectDatabaseTx db = null;
    
         try {
@@ -107,8 +108,9 @@ public class ApplicationStarter implements CommandLineRunner {
                 db.close();
             }
         }
-    
+    */
     }
     
+
 
 }

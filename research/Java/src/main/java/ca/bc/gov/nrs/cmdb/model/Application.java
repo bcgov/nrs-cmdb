@@ -2,6 +2,7 @@ package ca.bc.gov.nrs.cmdb.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -34,6 +35,10 @@ public class Application   {
     this.id = id;
     return this;
   }
+  
+  @Version
+    @JsonIgnore
+    private Long version;
 
   
   @ApiModelProperty(example = "null", required = true, value = "A system-generated unique identifier for an application.")

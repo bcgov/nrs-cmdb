@@ -12,6 +12,8 @@ package ca.bc.gov.nrs.cmdb;
  */
 
 import javax.annotation.PostConstruct;
+
+import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -24,11 +26,18 @@ import ca.bc.gov.nrs.cmdb.model.Module;
 
 @Configuration
 @EnableTransactionManagement
-@EnableOrientRepositories(basePackages = "ca.bc.gov.nrs.cmdb.repository")
+
 public class CmdbConfiguration {
 
     @Bean
-    public OrientObjectDatabaseFactory factory() {
+    public com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory() {
+        com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory =  new OrientGraphFactory("remote:127.0.0.1/cmdb","admin","admin");
+
+        return factory;
+    }
+
+    @Bean
+    public OrientObjectDatabaseFactory ofactory() {
         OrientObjectDatabaseFactory factory =  new OrientObjectDatabaseFactory();
 
         factory.setUrl("remote:127.0.0.1/cmdb");
@@ -38,19 +47,20 @@ public class CmdbConfiguration {
         return factory;
     }
 
+
+
     @Bean
     public OrientTransactionManager transactionManager() {
-        return new OrientTransactionManager(factory());
+        return new OrientTransactionManager(ofactory());
     }
 
     @Bean
     public OrientObjectTemplate objectTemplate() {
-        return new OrientObjectTemplate(factory());
+        return new OrientObjectTemplate(ofactory());
     }
 
-
-    @PostConstruct
-    public void registerEntities() {
-        factory().db().getEntityManager().registerEntityClass(Application.class);
-    }
+    //@PostConstruct
+    //public void registerEntities() {
+    //    factory().db().getEntityManager().registerEntityClass(Application.class);
+    //}
 }
