@@ -11,18 +11,13 @@ package ca.bc.gov.nrs.cmdb;
  * @author George
  */
 
-import javax.annotation.PostConstruct;
-
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.data.orient.commons.repository.config.EnableOrientRepositories;
 import org.springframework.data.orient.object.OrientObjectDatabaseFactory;
 import org.springframework.data.orient.commons.core.OrientTransactionManager;
 import org.springframework.data.orient.object.OrientObjectTemplate;
-import ca.bc.gov.nrs.cmdb.model.Application;
-import ca.bc.gov.nrs.cmdb.model.Module;
 
 @Configuration
 @EnableTransactionManagement
@@ -59,8 +54,4 @@ public class CmdbConfiguration {
         return new OrientObjectTemplate(ofactory());
     }
 
-    //@PostConstruct
-    //public void registerEntities() {
-    //    factory().db().getEntityManager().registerEntityClass(Application.class);
-    //}
 }

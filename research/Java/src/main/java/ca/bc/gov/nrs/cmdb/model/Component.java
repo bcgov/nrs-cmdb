@@ -1,33 +1,31 @@
 package ca.bc.gov.nrs.cmdb.model;
 
-import ca.bc.gov.nrs.cmdb.model.Application;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 
 
 /**
- * Application Module
+ * Project Component
  **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 //import org.springframework.data.gremlin.annotation.*;
-@ApiModel(description = "Application Module")
+@ApiModel(description = "Project Component")
 
 //@Vertex
-public class Module   {
+public class Component {
 //  @Id
   private Integer id = null;
 //  @Property("module_name")
   private String name = null;
 //  @Link("part_of_application")
-  private Application module = null;
+  private Project module = null;
 
   /**
    * A system-generated unique identifier for a module
    **/
-  public Module id(Integer id) {
+  public Component id(Integer id) {
     this.id = id;
     return this;
   }
@@ -45,7 +43,7 @@ public class Module   {
   /**
    * The name of the application.
    **/
-  public Module name(String name) {
+  public Component name(String name) {
     this.name = name;
     return this;
   }
@@ -61,20 +59,20 @@ public class Module   {
   }
 
   /**
-   * A foreign key reference to the Application.
+   * A foreign key reference to the Project.
    **/
-  public Module module(Application module) {
+  public Component module(Project module) {
     this.module = module;
     return this;
   }
 
   
-  @ApiModelProperty(example = "null", required = true, value = "A foreign key reference to the Application.")
+  @ApiModelProperty(example = "null", required = true, value = "A foreign key reference to the Project.")
   @JsonProperty("module")
-  public Application getModule() {
+  public Project getModule() {
     return module;
   }
-  public void setModule(Application module) {
+  public void setModule(Project module) {
     this.module = module;
   }
 
@@ -87,10 +85,10 @@ public class Module   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Module module = (Module) o;
-    return Objects.equals(id, module.id) &&
-        Objects.equals(name, module.name) &&
-        Objects.equals(module, module.module);
+    Component component = (Component) o;
+    return Objects.equals(id, component.id) &&
+        Objects.equals(name, component.name) &&
+        Objects.equals(component, component.module);
   }
 
   @Override
@@ -101,7 +99,7 @@ public class Module   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Module {\n");
+    sb.append("class Component {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

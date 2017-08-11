@@ -1,37 +1,35 @@
 package ca.bc.gov.nrs.cmdb.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Version;
 
 /**
- * Application
+ * Project
  **/
 
 import java.util.Objects;
 //import org.springframework.data.gremlin.annotation.*;
-@ApiModel(description = "Application")
+@ApiModel(description = "Project")
 
 //@Vertex
-public class Application   {
+public class Project {
   
     
   @Id  
   private Integer id = null;
   
-//  @Property("application_name")
+//  @Property("project_name")
   private String name = null;
 
   /**
-   * A system-generated unique identifier for an application.
+   * A system-generated unique identifier for an project.
    **/
-  public Application id(Integer id) {
+  public Project id(Integer id) {
     this.id = id;
     return this;
   }
@@ -41,7 +39,7 @@ public class Application   {
     private Long version;
 
   
-  @ApiModelProperty(example = "null", required = true, value = "A system-generated unique identifier for an application.")
+  @ApiModelProperty(example = "null", required = true, value = "A system-generated unique identifier for an project.")
   @JsonProperty("id")
   public Integer getId() {
     return id;
@@ -51,15 +49,15 @@ public class Application   {
   }
 
   /**
-   * The name of the application.
+   * The name of the project.
    **/
-  public Application name(String name) {
+  public Project name(String name) {
     this.name = name;
     return this;
   }
 
   
-  @ApiModelProperty(example = "null", value = "The name of the application.")
+  @ApiModelProperty(example = "null", value = "The name of the project.")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -77,9 +75,9 @@ public class Application   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Application application = (Application) o;
-    return Objects.equals(id, application.id) &&
-        Objects.equals(name, application.name);
+    Project project = (Project) o;
+    return Objects.equals(id, project.id) &&
+        Objects.equals(name, project.name);
   }
 
   @Override
@@ -90,7 +88,7 @@ public class Application   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Application {\n");
+    sb.append("class Project {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
