@@ -38,7 +38,7 @@ import com.tinkerpop.blueprints.impls.orient.OrientGraph;
  */
 
 @RestController
-@RequestMapping("/Projects")
+@RequestMapping("/projects")
 
 public class ProjectsController {
     
@@ -106,34 +106,34 @@ public class ProjectsController {
                 }
 
                 
-                // now look for Componments.
+                // now look for Components.
                 String[] items = subdir.list();
 
                 for (String item : items) {
                     // parse the item.
                     String[] parts = item.split("[.]");
-                    String Componment = parts[0];
+                    String Component = parts[0];
                     String ExecutionEnvironment = parts[1];
 
-                    String ComponmentKey = filename.toUpperCase() + "_" + Componment.toUpperCase();
+                    String ComponentKey = filename.toUpperCase() + "_" + Component.toUpperCase();
 
-                    OrientVertex vComponment = null;
-                    // lookup the Componment.
-                    Iterable<Vertex> Componments = graph.getVertices("Componment.key", ComponmentKey);
-                    if (Componments != null && Componments.iterator().hasNext())
+                    OrientVertex vComponent = null;
+                    // lookup the Component.
+                    Iterable<Vertex> Components = graph.getVertices("Component.key", ComponentKey);
+                    if (Components != null && Components.iterator().hasNext())
                     {
-                        vComponment = (OrientVertex) Componments.iterator().next();
+                        vComponent = (OrientVertex) Components.iterator().next();
                     }
                     else
                     {
-                        vComponment = graph.addVertex("class:Componment");
-                        vComponment.setProperty("name", Componment);
-                        vComponment.setProperty("key", ComponmentKey);
+                        vComponent = graph.addVertex("class:Component");
+                        vComponent.setProperty("name", Component);
+                        vComponent.setProperty("key", ComponentKey);
                         // ensure there is an edge.
-                        graph.addEdge(null, vProject, vComponment, "has");
+                        graph.addEdge(null, vProject, vComponent, "has");
                     }
 
-                    String ExecutionEnvironmentKey = ComponmentKey + "_" + ExecutionEnvironment.toUpperCase();
+                    String ExecutionEnvironmentKey = ComponentKey + "_" + ExecutionEnvironment.toUpperCase();
 
                     OrientVertex vExecutionEnvironment = null;
                     // lookup the ExecutionEnvironment.
@@ -150,9 +150,9 @@ public class ProjectsController {
                     }
 
                     // ensure there is an edge between the ExecutionEnvironment and the property.
-                    Iterable<com.tinkerpop.blueprints.Edge> edges = vComponment.getEdges( vExecutionEnvironment, Direction.BOTH, "has");
+                    Iterable<com.tinkerpop.blueprints.Edge> edges = vComponent.getEdges( vExecutionEnvironment, Direction.BOTH, "has");
                     if (edges == null) {
-                        graph.addEdge(null, vComponment, vExecutionEnvironment, "is in");
+                        graph.addEdge(null, vComponent, vExecutionEnvironment, "is in");
                     }
 
                     // now load the properties.
@@ -208,12 +208,13 @@ public class ProjectsController {
                         {
                             vPropertyValue = graph.addVertex("class:PropertyValue");
                             vPropertyValue.setProperty("value", value);
+                            vPropertyValue.setProperty("key", propertyKey);
                             // connect the value to the property name.
                             graph.addEdge(null, vPropertyName, vPropertyValue, "is");
                             // connect the value to an  ExecutionEnvironment.
                             graph.addEdge(null, vExecutionEnvironment, vPropertyValue, "has");
-                            // connect the value to a Componment
-                            graph.addEdge(null, vComponment, vPropertyValue, "has");
+                            // connect the value to a Component
+                            graph.addEdge(null, vComponent, vPropertyValue, "has");
                         }
 
                     }
@@ -225,8 +226,5 @@ public class ProjectsController {
         }
         graph.shutdown();
         return "Data has been imported";
-    }    
-    
-    
-    
+    }
 }
