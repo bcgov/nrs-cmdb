@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 
 public class Application extends SpringBootServletInitializer {
-    
+
     @Autowired
     private com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory;
 
