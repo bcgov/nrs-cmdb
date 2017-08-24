@@ -18,35 +18,24 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.FuseGenerator", date = "2017-07-17T11:39:48.709-07:00")
 
-
-
 @Configuration
 @EnableAutoConfiguration
 @EnableTransactionManagement
 @ComponentScan("ca.bc.gov.nrs.cmdb")
 @SpringBootApplication
 
-public class ApplicationStarter extends SpringBootServletInitializer implements CommandLineRunner {
-
-
-
+public class Application extends SpringBootServletInitializer {
+    
     @Autowired
     private com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory;
 
-    
     public static void main(final String[] args) throws Exception {
-        SpringApplication.run(ApplicationStarter.class, args);
-    }
-
-
-    @Override
-    public void run(String... args) throws Exception {
-
+        SpringApplication.run(Application.class, args);
     }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(ApplicationStarter.class);
+        return application.sources(Application.class);
     }
 
 }
