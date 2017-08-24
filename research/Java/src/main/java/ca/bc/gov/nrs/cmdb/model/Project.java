@@ -2,8 +2,7 @@ package ca.bc.gov.nrs.cmdb.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
 
 import javax.persistence.Id;
 import javax.persistence.Version;
@@ -13,8 +12,7 @@ import javax.persistence.Version;
  **/
 
 import java.util.Objects;
-//import org.springframework.data.gremlin.annotation.*;
-@ApiModel(description = "Project")
+
 
 //@Vertex
 public class Project {
@@ -38,8 +36,6 @@ public class Project {
     @JsonIgnore
     private Long version;
 
-  
-  @ApiModelProperty(example = "null", required = true, value = "A system-generated unique identifier for an project.")
   @JsonProperty("id")
   public Integer getId() {
     return id;
@@ -55,9 +51,7 @@ public class Project {
     this.name = name;
     return this;
   }
-
   
-  @ApiModelProperty(example = "null", value = "The name of the project.")
   @JsonProperty("name")
   public String getName() {
     return name;

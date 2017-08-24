@@ -1,17 +1,14 @@
 package ca.bc.gov.nrs.cmdb.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
 
 
 /**
  * Project Component
  **/
 
-import io.swagger.annotations.*;
 import java.util.Objects;
 //import org.springframework.data.gremlin.annotation.*;
-@ApiModel(description = "Project Component")
 
 //@Vertex
 public class Component {
@@ -30,8 +27,6 @@ public class Component {
     return this;
   }
 
-  
-  @ApiModelProperty(example = "null", value = "A system-generated unique identifier for a module")
   @JsonProperty("id")
   public Integer getId() {
     return id;
@@ -48,8 +43,6 @@ public class Component {
     return this;
   }
 
-  
-  @ApiModelProperty(example = "null", value = "The name of the application.")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -66,8 +59,6 @@ public class Component {
     return this;
   }
 
-  
-  @ApiModelProperty(example = "null", required = true, value = "A foreign key reference to the Project.")
   @JsonProperty("module")
   public Project getModule() {
     return module;
