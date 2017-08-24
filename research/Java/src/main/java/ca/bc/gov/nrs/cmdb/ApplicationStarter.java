@@ -8,6 +8,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -21,8 +24,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAutoConfiguration
 @EnableTransactionManagement
 @ComponentScan("ca.bc.gov.nrs.cmdb")
+@SpringBootApplication
 
-public class ApplicationStarter implements CommandLineRunner {
+public class ApplicationStarter extends SpringBootServletInitializer implements CommandLineRunner {
 
 
 
@@ -39,7 +43,10 @@ public class ApplicationStarter implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
     }
-    
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(ApplicationStarter.class);
+    }
 
 }
