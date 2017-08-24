@@ -22,6 +22,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Properties;
 
 /**
@@ -45,28 +47,88 @@ public class PropertiesController {
      */
 
     public String GetValue(
-        @RequestParam(required = true) String project,
-        @RequestParam(required = true) String component,
-        @RequestParam(required = true) String environment,
-        @RequestParam(required = true) String property
+        @RequestParam(required = false) String project,
+        @RequestParam(required = false) String component,
+        @RequestParam(required = false) String environment,
+        @RequestParam(required = false) String property
         )
     {
+        gson = new Gson();
         String result = "";
         // get a graph database connection
         OrientGraphNoTx graph =  factory.getNoTx();
 
-        // construct the property key
-        String ComponentKey = project.toUpperCase() + "_" + component.toUpperCase();
-        String executionEnvironmentKey = ComponentKey + "_" + environment.toUpperCase();
-        String propertyKey = executionEnvironmentKey + "_" + property.toUpperCase();
+        // if all properties are present, get the single value.
 
-        // get a list of matching values
-        Iterable<Vertex> properties = graph.getVertices("PropertyValue.key", propertyKey);
-        OrientVertex vProperty = null;
-        if (properties != null && properties.iterator().hasNext())
+        if (project != null && component != null && environment != null && property != null) {
+            // construct the property key
+            String ComponentKey = project.toUpperCase() + "_" + component.toUpperCase();
+            String executionEnvironmentKey = ComponentKey + "_" + environment.toUpperCase();
+            String propertyKey = executionEnvironmentKey + "_" + property.toUpperCase();
+
+            // get a list of matching values
+            Iterable<Vertex> properties = graph.getVertices("PropertyValue.key", propertyKey);
+            OrientVertex vProperty = null;
+            if (properties != null && properties.iterator().hasNext()) {
+                vProperty = (OrientVertex) properties.iterator().next();
+                result = vProperty.getProperty("value");
+            }
+
+        }
+        else // it is a query for multiple records.
         {
-            vProperty = (OrientVertex) properties.iterator().next();
-            result = vProperty.getProperty ("value");
+            Iterable<Vertex> properties = graph.getVerticesOfClass("PropertyValue", false);
+            OrientVertex vProperty = null;
+
+            HashMap<String,String> results = new HashMap<String,String>();
+
+            Iterator<Vertex> looper = properties.iterator();
+            while (looper.hasNext())
+            {
+                vProperty = (OrientVertex) looper.next();
+
+                String key = vProperty.getProperty("key");
+                String [] parts = key.split("_");
+                String propertyProject = parts[0];
+                String propertyComponent = parts[1];
+                String propertyEnvironment = parts[2];
+                String propertyName = parts[3];
+
+                boolean  matched = true;
+                if (project != null && !project.equalsIgnoreCase(propertyProject))
+                {
+                    matched = false;
+                }
+                if (matched && component != null && !component.equalsIgnoreCase(propertyComponent))
+                {
+                    matched = false;
+                }
+                if (matched && environment != null && !environment.equalsIgnoreCase(propertyEnvironment))
+                {
+                    matched = false;
+                }
+                if (matched && property != null && !property.equalsIgnoreCase(propertyName))
+                {
+                    matched = false;
+                }
+
+                if (matched)
+                {
+                    String value = vProperty.getProperty("value");
+
+                    results.put(propertyName, value);
+                }
+            }
+            if (results.size() > 0)
+            {
+                result = gson.toJson(results);
+            }
+            else
+            {
+                result = "[]";
+            }
+
+
         }
 
         // shutdown the graph database connection
