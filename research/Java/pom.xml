@@ -40,17 +40,17 @@
       <dependency>
           <groupId>com.orientechnologies</groupId>
           <artifactId>orientdb-core</artifactId>
-          <version>2.2.24</version>
+          <version>2.2.21</version>
       </dependency>
       <dependency>
           <groupId>com.orientechnologies</groupId>
           <artifactId>orientdb-graphdb</artifactId>
-          <version>2.2.24</version>
+          <version>2.2.21</version>
       </dependency>
       <dependency>
           <groupId>com.orientechnologies</groupId>
           <artifactId>orientdb-client</artifactId>
-          <version>2.2.24</version>
+          <version>2.2.21</version>
       </dependency>
 
       <dependency>
@@ -89,23 +89,3 @@
   </repositories>
 </project>
 
-<!--
-
-<dependency>
-    <groupId>com.orientechnologies</groupId>
-    <artifactId>spring-data-orientdb-commons</artifactId>
-    <version>0.14</version>
-</dependency>
-<dependency>
-    <groupId>com.orientechnologies</groupId>
-    <artifactId>spring-data-orientdb-object</artifactId>
-    <version>0.14</version>
-</dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>4.3.3.RELEASE</version>
-      <type>jar</type>
-    </dependency>
-    
-    -->
