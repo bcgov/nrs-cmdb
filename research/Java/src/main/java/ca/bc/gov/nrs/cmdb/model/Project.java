@@ -51,7 +51,7 @@ public class Project {
     this.name = name;
     return this;
   }
-  
+
   @JsonProperty("name")
   public String getName() {
     return name;
