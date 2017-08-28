@@ -14,13 +14,13 @@ package ca.bc.gov.nrs.cmdb;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+//import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.data.orient.object.OrientObjectDatabaseFactory;
 import org.springframework.data.orient.commons.core.OrientTransactionManager;
 import org.springframework.data.orient.object.OrientObjectTemplate;
 
 @Configuration
-@EnableTransactionManagement
+//@EnableTransactionManagement
 
 public class CmdbConfiguration {
 

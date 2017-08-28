@@ -1,30 +1,26 @@
 package ca.bc.gov.nrs.cmdb;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-// reference https://blog.openshift.com/using-spring-boot-on-openshift/
+// This application shell is based on the reference OpenShift application available at
+//  https://blog.openshift.com/using-spring-boot-on-openshift/
 
-//@Configuration
-@ComponentScan ("ca.bc.gov.nrs.cmdb")
+@Configuration
+@ComponentScan
 @EnableAutoConfiguration
 @SpringBootApplication
 
 public class ApplicationStarter extends SpringBootServletInitializer {
 
-    @Autowired
-    private com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory;
-
     public static void main(String[] args) {
+        // run as a web application.
+        //new SpringApplicationBuilder(ApplicationStarter.class).web(false).run(args);
         SpringApplication.run(ApplicationStarter.class, args);
     }
 
