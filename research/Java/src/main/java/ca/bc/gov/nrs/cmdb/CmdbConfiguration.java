@@ -26,7 +26,14 @@ public class CmdbConfiguration {
 
     @Bean
     public com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory() {
-        com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory =  new OrientGraphFactory("remote:127.0.0.1/cmdb","admin","admin");
+
+        String orientDBServer = System.getenv("ORIENTDB_SERVER");
+        String orientDBUser = System.getenv("ORIENTDB_USER");
+        String orientDBPass = System.getenv("ORIENTDB_PASS");
+        String orientDBName = System.getenv("ORIENTDB_NAME");
+
+        com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory =  new OrientGraphFactory("remote:"+ orientDBUser +"/" + orientDBName,
+                orientDBUser,orientDBPass);
 
         return factory;
     }
