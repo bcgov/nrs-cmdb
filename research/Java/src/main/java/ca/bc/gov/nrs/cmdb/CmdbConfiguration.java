@@ -32,7 +32,7 @@ public class CmdbConfiguration {
         String orientDBPass = System.getenv("ORIENTDB_PASS");
         String orientDBName = System.getenv("ORIENTDB_NAME");
 
-        com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory =  new OrientGraphFactory("remote:"+ orientDBUser +"/" + orientDBName,
+        com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory =  new OrientGraphFactory("remote:"+ orientDBServer +"/" + orientDBName,
                 orientDBUser,orientDBPass);
 
         return factory;
@@ -49,7 +49,7 @@ public class CmdbConfiguration {
         String orientDBPass = System.getenv("ORIENTDB_PASS");
         String orientDBName = System.getenv("ORIENTDB_NAME");
 
-                factory.setUrl("remote:"+ orientDBUser +"/" + orientDBName);
+                factory.setUrl("remote:"+ orientDBServer +"/" + orientDBName);
         factory.setUsername(orientDBUser);
         factory.setPassword(orientDBPass);
 
