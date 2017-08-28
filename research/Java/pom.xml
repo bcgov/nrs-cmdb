@@ -9,7 +9,7 @@
         <version>1.3.3.RELEASE</version>
     </parent>
 
-    <groupId>cmdb</groupId>
+    <groupId>ca.bc.gov.nrs.cmdb</groupId>
     <artifactId>cmdb</artifactId>
     <packaging>war</packaging>
     <name>cmdb</name>

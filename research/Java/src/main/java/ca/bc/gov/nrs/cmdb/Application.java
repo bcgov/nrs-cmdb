@@ -16,17 +16,17 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @SpringBootApplication
 
-public class ApplicationStarter extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         // run as a web application.
         //new SpringApplicationBuilder(ApplicationStarter.class).web(false).run(args);
-        SpringApplication.run(ApplicationStarter.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(ApplicationStarter.class);
+        return application.sources(Application.class);
     }
 
 }
