@@ -43,14 +43,14 @@ public class ComponentsController {
     {
         OrientVertex result = null;
         // lookup the Component.
-        Iterable<Vertex> Components = graph.getVertices("Component.key", key);
+        Iterable<Vertex> Components = graph.getVertices(vertexType + ".key", key);
         if (Components != null && Components.iterator().hasNext())
         {
             result = (OrientVertex) Components.iterator().next();
         }
         else
         {
-            result = graph.addVertex("class:Component");
+            result = graph.addVertex("class:" + vertexType);
             result.setProperty("key", key);
         }
         return result;

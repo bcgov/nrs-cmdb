@@ -20,8 +20,7 @@ import org.springframework.context.annotation.Configuration;
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        // run as a web application.
-        //new SpringApplicationBuilder(ApplicationStarter.class).web(false).run(args);
+        // run the application.
         SpringApplication.run(Application.class, args);
     }
 
