@@ -61,10 +61,9 @@ public class ComponentsController {
     {
         // ensure there is an edge between the ExecutionEnvironment and the property.
         Iterable<com.tinkerpop.blueprints.Edge> edges = vSource.getEdges( vDestination, Direction.BOTH, edgeLabel);
-        if (edges == null) {
+        if (edges == null || ! edges.iterator().hasNext()) {
             graph.addEdge(null, vSource, vDestination, edgeLabel);
         }
-
     }
 
 
