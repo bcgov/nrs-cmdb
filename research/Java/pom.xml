@@ -11,7 +11,7 @@
 
     <groupId>ca.bc.gov.nrs.cmdb</groupId>
     <artifactId>cmdb</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>cmdb</name>
     <version>1.0.0</version>
 
@@ -74,6 +74,11 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <version>1.5.3.RELEASE</version>
         </dependency>
 
 
