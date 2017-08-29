@@ -14,19 +14,26 @@ package ca.bc.gov.nrs.cmdb;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+//import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.data.orient.object.OrientObjectDatabaseFactory;
 import org.springframework.data.orient.commons.core.OrientTransactionManager;
 import org.springframework.data.orient.object.OrientObjectTemplate;
 
 @Configuration
-@EnableTransactionManagement
+//@EnableTransactionManagement
 
 public class CmdbConfiguration {
 
     @Bean
     public com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory() {
-        com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory =  new OrientGraphFactory("remote:127.0.0.1/cmdb","admin","admin");
+
+        String orientDBServer = System.getenv("ORIENTDB_SERVER");
+        String orientDBUser = System.getenv("ORIENTDB_USER");
+        String orientDBPass = System.getenv("ORIENTDB_PASS");
+        String orientDBName = System.getenv("ORIENTDB_NAME");
+
+        com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory =  new OrientGraphFactory("remote:"+ orientDBServer +"/" + orientDBName,
+                orientDBUser,orientDBPass);
 
         return factory;
     }
@@ -35,9 +42,16 @@ public class CmdbConfiguration {
     public OrientObjectDatabaseFactory ofactory() {
         OrientObjectDatabaseFactory factory =  new OrientObjectDatabaseFactory();
 
-        factory.setUrl("remote:127.0.0.1/cmdb");
-        factory.setUsername("admin");
-        factory.setPassword("admin");
+        // get connection details from the environment.
+
+        String orientDBServer = System.getenv("ORIENTDB_SERVER");
+        String orientDBUser = System.getenv("ORIENTDB_USER");
+        String orientDBPass = System.getenv("ORIENTDB_PASS");
+        String orientDBName = System.getenv("ORIENTDB_NAME");
+
+                factory.setUrl("remote:"+ orientDBServer +"/" + orientDBName);
+        factory.setUsername(orientDBUser);
+        factory.setPassword(orientDBPass);
 
         return factory;
     }
