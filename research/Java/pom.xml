@@ -11,7 +11,7 @@
 
     <groupId>ca.bc.gov.nrs.cmdb</groupId>
     <artifactId>cmdb</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>cmdb</name>
     <version>1.0.0</version>
 
@@ -85,6 +85,7 @@
 
     </dependencies>
     <build>
+        <finalName>ROOT</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -97,7 +98,6 @@
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <outputDirectory>target</outputDirectory>
-                    <warName>ROOT</warName>
                 </configuration>
             </plugin>
         </plugins>
