@@ -1,14 +1,5 @@
 connect remote:localhost/cmdb user pass
 
-DROP CLASS Component 
-DROP CLASS ExecutionEnvironment 
-DROP CLASS Artifact 
-DROP CLASS DeploymentSpec
-DROP CLASS DeviceNode 
-DROP CLASS DeploymentSpec 
-DROP CLASS PropertyValue 
-DROP CLASS PropertyName 
-
 CREATE CLASS Component IF NOT EXISTS EXTENDS V 
 CREATE CLASS ExecutionEnvironment IF NOT EXISTS EXTENDS V 
 CREATE CLASS Artifact IF NOT EXISTS EXTENDS V 
