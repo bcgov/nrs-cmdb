@@ -34,6 +34,7 @@ CREATE CLASS Hosted_By IF NOT EXISTS EXTENDS E
 
 -- Infrastructure
 CREATE VERTEX DeviceNode SET key = "BLEWIT"
+CREATE VERTEX DeviceNode SET key = "SERVER2"
 
 -- Middle Tier
 CREATE VERTEX  LogicalExecutionEnvironment SET key = "WLH01"
