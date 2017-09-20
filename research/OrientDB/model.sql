@@ -1,7 +1,12 @@
 connect remote:localhost/cmdb user pass
 
+/*Delete ALL data (vertex/edge)*/
 DELETE VERTEX V
 DELETE EDGE E
+
+/*Drop all (user) classes*/
+js; var classes=db.metadata.schema.getClass('E').getAllSubclasses().iterator(); while (classes.hasNext()) {db.query('DROP CLASS '+classes.next().getName());};end;
+js; var classes=db.metadata.schema.getClass('V').getAllSubclasses().iterator(); while (classes.hasNext()) {db.query('DROP CLASS '+classes.next().getName());};end;
 
 
 CREATE CLASS Component IF NOT EXISTS EXTENDS V 
