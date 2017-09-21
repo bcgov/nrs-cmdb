@@ -57,11 +57,22 @@ CREATE VERTEX Environment SET key = "TEST"
 CREATE VERTEX Environment SET key = "PRODUCTION"
 
 -- Infrastructure
+CREATE VERTEX PhysicalServer SET key = "ORADBSA1"
+CREATE VERTEX PhysicalServer SET key = "ORADBSA2"
+
+
 CREATE VERTEX PhysicalServer SET key = "SERVERA_I1"
 CREATE VERTEX PhysicalServer SET key = "SERVERA_T1"
 CREATE VERTEX PhysicalServer SET key = "SERVERA_P1"
+
 CREATE VERTEX VirtualServer  SET key = "SERVERB_1"
 CREATE VERTEX VirtualServer  SET key = "SERVERB_2"
+
+CREATE VERTEX  LogicalExecutionEnvironment SET key = "ORADB", name = "Oracle Database"
+CREATE VERTEX  PhysicalExecutionEnvironment SET key = "ORADB1I"
+CREATE VERTEX  PhysicalExecutionEnvironment SET key = "ORADB1T"
+CREATE VERTEX  PhysicalExecutionEnvironment SET key = "ORADB1P"
+
 
 -- Middle Tier
 CREATE VERTEX  LogicalExecutionEnvironment SET key = "WLS", name = "Oracle WebLogic"
@@ -154,3 +165,11 @@ CREATE EDGE Has_Instance FROM (SELECT FROM LogicalComponent WHERE key = "TITAN_D
 --CREATE EDGE Deployed_To FROM (SELECT FROM V WHERE key = "TITAN_EAR_I") TO (SELECT FROM V WHERE key = "WLS1I")
 
 
+CREATE VERTEX  LogicalComponent SET key = "TITAN_SCHEMA"
+CREATE VERTEX PhysicalComponent SET key = "TITAN_SCHEMA_I"
+CREATE VERTEX PhysicalComponent SET key = "TITAN_SCHEMA_T"
+CREATE VERTEX PhysicalComponent SET key = "TITAN_SCHEMA_P"
+
+CREATE EDGE Has_Instance FROM (SELECT FROM LogicalComponent WHERE key = "TITAN_SCHEMA") TO (SELECT FROM PhysicalComponent WHERE key = "TITAN_SCHEMA_I")
+CREATE EDGE Has_Instance FROM (SELECT FROM LogicalComponent WHERE key = "TITAN_SCHEMA") TO (SELECT FROM PhysicalComponent WHERE key = "TITAN_SCHEMA_T")
+CREATE EDGE Has_Instance FROM (SELECT FROM LogicalComponent WHERE key = "TITAN_SCHEMA") TO (SELECT FROM PhysicalComponent WHERE key = "TITAN_SCHEMA_P")
