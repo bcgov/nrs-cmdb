@@ -68,10 +68,14 @@ CREATE VERTEX PhysicalServer SET key = "SERVERA_P1"
 CREATE VERTEX VirtualServer  SET key = "SERVERB_1"
 CREATE VERTEX VirtualServer  SET key = "SERVERB_2"
 
-CREATE VERTEX  LogicalExecutionEnvironment SET key = "ORADB", name = "Oracle Database"
+CREATE VERTEX  LogicalExecutionEnvironment SET key = "ORADB1", name = "Oracle Database"
 CREATE VERTEX  PhysicalExecutionEnvironment SET key = "ORADB1I"
 CREATE VERTEX  PhysicalExecutionEnvironment SET key = "ORADB1T"
 CREATE VERTEX  PhysicalExecutionEnvironment SET key = "ORADB1P"
+
+CREATE EDGE Instance_Of FROM (SELECT FROM ExecutionEnvironment WHERE key = "ORADB1I") TO (SELECT FROM ExecutionEnvironment WHERE key = "ORADB1")
+CREATE EDGE Instance_Of FROM (SELECT FROM ExecutionEnvironment WHERE key = "ORADB1T") TO (SELECT FROM ExecutionEnvironment WHERE key = "ORADB1")
+CREATE EDGE Instance_Of FROM (SELECT FROM ExecutionEnvironment WHERE key = "ORADB1P") TO (SELECT FROM ExecutionEnvironment WHERE key = "ORADB1")
 
 
 -- Middle Tier
