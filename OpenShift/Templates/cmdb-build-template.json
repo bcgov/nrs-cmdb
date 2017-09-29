@@ -139,7 +139,7 @@
         "source": {
             "type": "Git",
             "git": {
-                "uri": "https://github.com/bcgov/dcts.git",
+                "uri": "https://github.com/bcgov/nrs-cmdb.git",
                 "ref": "java-research"
             },
             "contextDir": "/research/Java"
@@ -638,7 +638,7 @@
       "name": "SOURCE_REPOSITORY_URL",
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
-      "value": "https://github.com/bcgov/dcts.git"
+      "value": "https://github.com/bcgov/nrs-cmdb.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",

@@ -42,7 +42,7 @@ We are just getting started on this project. At this point, the only decision ma
 
 ## Project Tracking
 
-We are using github issues and a [project Kanban board](https://github.com/bcgov/dcts/projects/1) to track progress on this project. Please checkout our progress there.
+We are using github issues and a [project Kanban board](https://github.com/bcgov/nrs-cmdb/projects/1) to track progress on this project. Please checkout our progress there.
 
 
 ----------
@@ -97,8 +97,8 @@ To setup the CMDB demonstration:
 		1.  `oc port-forward <podname> 2424:2424`
 	5.  Run the OrientDB console.bat command to start the OrientDB interactive console
 	6.  Execute the OrientDB console commands located in the following files:
-		1. https://github.com/bcgov/dcts/blob/master/research/OrientDB/model.sql
-		2. https://github.com/bcgov/dcts/blob/master/research/OrientDB/sample-db.sql
+		1. https://github.com/bcgov/nrs-cmdb/blob/master/research/OrientDB/model.sql
+		2. https://github.com/bcgov/nrs-cmdb/blob/master/research/OrientDB/sample-db.sql
 10.  Demonstration of Graph Queries
 	1.  First, login to the graph database viewer.  If you do not know the URL, look it up in the OpenShift routes section.
 	2.  Navigate to the Schema view
@@ -108,7 +108,7 @@ To setup the CMDB demonstration:
 11.  Demonstration of Get / Set properties
 	1.  This project includes a proof of concept system that allows elements of the graph database to be retrieved / updated from a CI script.
 	2.  In the repository there is a batch file that can be run to demonstrate this activity.  
-		1.    The batch file is located at https://github.com/bcgov/dcts/blob/master/research/demo_get_set.bat 
+		1.    The batch file is located at https://github.com/bcgov/nrs-cmdb/blob/master/research/demo_get_set.bat 
 		2.    Pass the base URL to the rest service as a parameter to the batch file   
 
 
