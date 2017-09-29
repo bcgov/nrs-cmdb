@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="086f4e56-055c-40d3-9db1-95ad3a9021df" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="cmdb" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="ComponentsController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ComponentsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="109" column="20" lean-forward="false" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>get</find>
+      <find>Application</find>
+      <find>application</find>
+      <find>Componment</find>
+      <find>swagger</find>
+      <find>spri</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>Project</replace>
+      <replace>project</replace>
+      <replace>Component</replace>
+    </replaceStrings>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.8.RELEASE/spring-beans-4.3.8.RELEASE.jar!/org/springframework/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.class" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ApplicationsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ProjectsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/model/Component.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/model/Project.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/ApplicationStarter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/CmdbConfiguration.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ComponentsController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="width" value="1088" />
+    <option name="height" value="1038" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="configuration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cmdb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cmdb" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cmdb" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="settings.editor.selected.configurable" value="Images" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ca.bc.gov.nrs.cmdb.rest" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Maven.cmdb">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application" show_console_on_std_out="true" show_console_on_std_err="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="ca.bc.gov.nrs.cmdb.ApplicationStarter" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mvn" />
+                <option value="spring-boot:run" />
+              </list>
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+    <configuration name="cmdb" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="spring-boot:run" />
+              </list>
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="086f4e56-055c-40d3-9db1-95ad3a9021df" name="Default" comment="" />
+      <created>1501089900590</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1501089900590</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="All_in_cmdb - 2017.07.26 at 10h 27m 41s.xml">
+      <configuration name="All in cmdb" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="All_in_cmdb - 2017.07.26 at 10h 29m 30s.xml">
+      <configuration name="All in cmdb" configurationId="AndroidJUnit" />
+    </history-entry>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="0" width="1088" height="1038" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14018692" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271795" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39897436" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958803" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.56367433" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27083334" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ProjectsController.java</url>
+          <line>65</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="13" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ComponentsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2289">
+          <caret line="109" column="20" lean-forward="false" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2373">
+          <caret line="136" column="9" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="136" selection-end-column="9" />
+          <folding>
+            <marker date="1503562478929" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1503562478929" expanded="true" signature="226:1053" ph="..." />
+            <marker date="1503562478929" expanded="true" signature="1055:1083" ph="/**...*/" />
+            <marker date="1503562478929" expanded="true" signature="1085:1131" ph="@{...}" />
+            <marker date="1503562478929" expanded="true" signature="1630:4651" ph="{...}" />
+            <marker date="1503562478929" expanded="false" signature="2922:2937" ph="&lt;~&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/model/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="51" lean-forward="true" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
+          <folding>
+            <marker date="1503599429791" expanded="true" signature="42:253" ph="..." />
+            <marker date="1503599429791" expanded="true" signature="400:468" ph="/**...*/" />
+            <marker date="1503599429791" expanded="true" signature="501:541" ph="{...}" />
+            <marker date="1503599429791" expanded="true" signature="547:571" ph="@{...}" />
+            <marker date="1503599429791" expanded="false" signature="645:652" ph=" { " />
+            <marker date="1503599429791" expanded="false" signature="662:666" ph=" }" />
+            <marker date="1503599429791" expanded="false" signature="698:705" ph=" { " />
+            <marker date="1503599429791" expanded="false" signature="718:722" ph=" }" />
+            <marker date="1503599429791" expanded="true" signature="726:766" ph="/**...*/" />
+            <marker date="1503599429791" expanded="true" signature="802:846" ph="{...}" />
+            <marker date="1503599429791" expanded="false" signature="897:904" ph=" { " />
+            <marker date="1503599429791" expanded="false" signature="916:920" ph=" }" />
+            <marker date="1503599429791" expanded="false" signature="955:962" ph=" { " />
+            <marker date="1503599429791" expanded="false" signature="979:983" ph=" }" />
+            <marker date="1503599429791" expanded="true" signature="1032:1284" ph="{...}" />
+            <marker date="1503599429791" expanded="false" signature="1321:1328" ph=" { " />
+            <marker date="1503599429791" expanded="false" signature="1358:1362" ph=" }" />
+            <marker date="1503599429791" expanded="true" signature="1403:1681" ph="{...}" />
+            <marker date="1503599429791" expanded="true" signature="1685:1800" ph="/**...*/" />
+            <marker date="1503599429791" expanded="true" signature="1845:1947" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1911">
+          <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding>
+            <marker date="1503562478929" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1503562478929" expanded="true" signature="226:1053" ph="..." />
+            <marker date="1503562478929" expanded="true" signature="1055:1083" ph="/**...*/" />
+            <marker date="1503562478929" expanded="true" signature="1085:1131" ph="@{...}" />
+            <marker date="1503562478929" expanded="true" signature="1630:4651" ph="{...}" />
+            <marker date="1503562478929" expanded="false" signature="2922:2937" ph="&lt;~&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="51" column="9" lean-forward="true" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+          <folding>
+            <marker date="1503562478929" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1503562478929" expanded="true" signature="226:1053" ph="..." />
+            <marker date="1503562478929" expanded="true" signature="1055:1083" ph="/**...*/" />
+            <marker date="1503562478929" expanded="true" signature="1085:1131" ph="@{...}" />
+            <marker date="1503562478929" expanded="true" signature="1630:4651" ph="{...}" />
+            <marker date="1503562478929" expanded="false" signature="2922:2937" ph="&lt;~&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="76" column="4" lean-forward="false" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+          <folding>
+            <marker date="1503562478929" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1503562478929" expanded="true" signature="226:1053" ph="..." />
+            <marker date="1503562478929" expanded="true" signature="1055:1083" ph="/**...*/" />
+            <marker date="1503562478929" expanded="true" signature="1085:1131" ph="@{...}" />
+            <marker date="1503562478929" expanded="true" signature="1630:4651" ph="{...}" />
+            <marker date="1503562478929" expanded="false" signature="2922:2937" ph="&lt;~&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ProjectsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3696">
+          <caret line="205" column="67" lean-forward="false" selection-start-line="205" selection-start-column="67" selection-end-line="205" selection-end-column="67" />
+          <folding>
+            <marker date="1502744266602" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1502744266602" expanded="false" signature="226:1228" ph="..." />
+            <marker date="1502744266602" expanded="true" signature="1230:1258" ph="/**...*/" />
+            <marker date="1502744266602" expanded="true" signature="1260:1304" ph="@{...}" />
+            <marker date="1502744266602" expanded="true" signature="1502:9152" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ProjectsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4998">
+          <caret line="238" column="38" lean-forward="false" selection-start-line="238" selection-start-column="38" selection-end-line="238" selection-end-column="38" />
+          <folding>
+            <marker date="1502744266602" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1502744266602" expanded="false" signature="226:1228" ph="..." />
+            <marker date="1502744266602" expanded="true" signature="1230:1258" ph="/**...*/" />
+            <marker date="1502744266602" expanded="true" signature="1260:1304" ph="@{...}" />
+            <marker date="1502744266602" expanded="true" signature="1502:9152" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ProjectsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3276">
+          <caret line="156" column="51" lean-forward="false" selection-start-line="156" selection-start-column="51" selection-end-line="156" selection-end-column="51" />
+          <folding>
+            <marker date="1502744266602" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1502744266602" expanded="false" signature="226:1228" ph="..." />
+            <marker date="1502744266602" expanded="true" signature="1230:1258" ph="/**...*/" />
+            <marker date="1502744266602" expanded="true" signature="1260:1304" ph="@{...}" />
+            <marker date="1502744266602" expanded="true" signature="1502:9152" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ProjectsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3276">
+          <caret line="156" column="51" lean-forward="false" selection-start-line="156" selection-start-column="51" selection-end-line="156" selection-end-column="51" />
+          <folding>
+            <marker date="1502744266602" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1502744266602" expanded="false" signature="226:1228" ph="..." />
+            <marker date="1502744266602" expanded="true" signature="1230:1258" ph="/**...*/" />
+            <marker date="1502744266602" expanded="true" signature="1260:1304" ph="@{...}" />
+            <marker date="1502744266602" expanded="true" signature="1502:9152" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ProjectsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1281">
+          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+          <folding>
+            <marker date="1502744266602" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1502744266602" expanded="false" signature="226:1228" ph="..." />
+            <marker date="1502744266602" expanded="true" signature="1230:1258" ph="/**...*/" />
+            <marker date="1502744266602" expanded="true" signature="1260:1304" ph="@{...}" />
+            <marker date="1502744266602" expanded="true" signature="1502:9152" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/repository/ApplicationRepository.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.8.RELEASE/spring-beans-4.3.8.RELEASE.jar!/org/springframework/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10175">
+          <caret line="560" column="0" lean-forward="false" selection-start-line="560" selection-start-column="0" selection-end-line="560" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/settings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2196">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1500316789090" expanded="true" signature="43:681" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="741:3901" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="934:1053" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="944:1040" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="1069:3797" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="1083:3783" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="1135:2417" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="1156:1559" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="1351:1411" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="1432:1537" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="1580:1992" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="1784:1844" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="1865:1970" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="2013:2395" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="2187:2247" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="2268:2373" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="2444:3768" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="2471:2880" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="2666:2726" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="2747:2852" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="2907:3325" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="3111:3171" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="3192:3297" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="3352:3740" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="3526:3586" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="3607:3712" ph="..." />
+            <marker date="1500316789090" expanded="true" signature="3817:3888" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/beans.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-392">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmdb.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/jre/lib/rt.jar!/sun/nio/ch/WindowsSelectorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1274">
+          <caret line="453" column="27" lean-forward="false" selection-start-line="453" selection-start-column="27" selection-end-line="453" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <marker date="1503562478929" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1503562478929" expanded="true" signature="226:1053" ph="..." />
+            <marker date="1503562478929" expanded="true" signature="1055:1083" ph="/**...*/" />
+            <marker date="1503562478929" expanded="true" signature="1085:1131" ph="@{...}" />
+            <marker date="1503562478929" expanded="true" signature="1630:4651" ph="{...}" />
+            <marker date="1503562478929" expanded="false" signature="2922:2937" ph="&lt;~&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/CmdbConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="47" column="61" lean-forward="true" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
+          <folding>
+            <marker date="1503964169920" expanded="true" signature="245:724" ph="..." />
+            <marker date="1503964169920" expanded="true" signature="252:724" ph="..." />
+            <marker date="1503964169920" expanded="true" signature="895:1371" ph="{...}" />
+            <marker date="1503964169920" expanded="true" signature="1433:2023" ph="{...}" />
+            <marker date="1503964169920" expanded="false" signature="2093:2104" ph=" { " />
+            <marker date="1503964169920" expanded="false" signature="2152:2158" ph=" }" />
+            <marker date="1503964169920" expanded="false" signature="2218:2229" ph=" { " />
+            <marker date="1503964169920" expanded="false" signature="2273:2279" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2100">
+          <caret line="100" column="32" lean-forward="true" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
+          <folding>
+            <marker date="1503984963106" expanded="true" signature="63:3974" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="326:493" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="681:1045" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="704:1017" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="729:993" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="1065:2808" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="1087:1240" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="1262:1645" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="1404:1623" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="1432:1597" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="1667:1850" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="1872:2036" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="2057:2224" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="2245:2411" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="2434:2592" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="2613:2785" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="2820:3471" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="2874:3458" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="2895:3043" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="3064:3439" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="3253:3417" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="3490:3761" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="3511:3741" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="3654:3719" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="3786:3963" ph="..." />
+            <marker date="1503984963106" expanded="true" signature="3813:3937" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/model/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <marker date="1503598980919" expanded="true" signature="42:147" ph="..." />
+            <marker date="1503598980919" expanded="true" signature="405:470" ph="/**...*/" />
+            <marker date="1503598980919" expanded="true" signature="505:545" ph="{...}" />
+            <marker date="1503598980919" expanded="false" signature="593:600" ph=" { " />
+            <marker date="1503598980919" expanded="false" signature="610:614" ph=" }" />
+            <marker date="1503598980919" expanded="false" signature="646:653" ph=" { " />
+            <marker date="1503598980919" expanded="false" signature="666:670" ph=" }" />
+            <marker date="1503598980919" expanded="true" signature="674:718" ph="/**...*/" />
+            <marker date="1503598980919" expanded="true" signature="756:800" ph="{...}" />
+            <marker date="1503598980919" expanded="false" signature="851:858" ph=" { " />
+            <marker date="1503598980919" expanded="false" signature="870:874" ph=" }" />
+            <marker date="1503598980919" expanded="false" signature="909:916" ph=" { " />
+            <marker date="1503598980919" expanded="false" signature="933:937" ph=" }" />
+            <marker date="1503598980919" expanded="true" signature="941:996" ph="/**...*/" />
+            <marker date="1503598980919" expanded="true" signature="1039:1087" ph="{...}" />
+            <marker date="1503598980919" expanded="false" signature="1143:1150" ph=" { " />
+            <marker date="1503598980919" expanded="false" signature="1164:1168" ph=" }" />
+            <marker date="1503598980919" expanded="false" signature="1208:1215" ph=" { " />
+            <marker date="1503598980919" expanded="false" signature="1236:1240" ph=" }" />
+            <marker date="1503598980919" expanded="true" signature="1289:1606" ph="{...}" />
+            <marker date="1503598980919" expanded="false" signature="1643:1650" ph=" { " />
+            <marker date="1503598980919" expanded="false" signature="1688:1692" ph=" }" />
+            <marker date="1503598980919" expanded="true" signature="1733:2090" ph="{...}" />
+            <marker date="1503598980919" expanded="true" signature="2094:2209" ph="/**...*/" />
+            <marker date="1503598980919" expanded="true" signature="2254:2356" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/model/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <marker date="1503599429791" expanded="true" signature="42:253" ph="..." />
+            <marker date="1503599429791" expanded="true" signature="400:468" ph="/**...*/" />
+            <marker date="1503599429791" expanded="true" signature="501:541" ph="{...}" />
+            <marker date="1503599429791" expanded="true" signature="547:571" ph="@{...}" />
+            <marker date="1503599429791" expanded="false" signature="645:652" ph=" { " />
+            <marker date="1503599429791" expanded="false" signature="662:666" ph=" }" />
+            <marker date="1503599429791" expanded="false" signature="698:705" ph=" { " />
+            <marker date="1503599429791" expanded="false" signature="718:722" ph=" }" />
+            <marker date="1503599429791" expanded="true" signature="726:766" ph="/**...*/" />
+            <marker date="1503599429791" expanded="true" signature="802:846" ph="{...}" />
+            <marker date="1503599429791" expanded="false" signature="897:904" ph=" { " />
+            <marker date="1503599429791" expanded="false" signature="916:920" ph=" }" />
+            <marker date="1503599429791" expanded="false" signature="955:962" ph=" { " />
+            <marker date="1503599429791" expanded="false" signature="979:983" ph=" }" />
+            <marker date="1503599429791" expanded="true" signature="1032:1284" ph="{...}" />
+            <marker date="1503599429791" expanded="false" signature="1321:1328" ph=" { " />
+            <marker date="1503599429791" expanded="false" signature="1358:1362" ph=" }" />
+            <marker date="1503599429791" expanded="true" signature="1403:1681" ph="{...}" />
+            <marker date="1503599429791" expanded="true" signature="1685:1800" ph="/**...*/" />
+            <marker date="1503599429791" expanded="true" signature="1845:1947" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <marker date="1503985619881" expanded="true" signature="36:482" ph="..." />
+            <marker date="1503985619881" expanded="true" signature="635:712" ph="@{...}" />
+            <marker date="1503985619881" expanded="true" signature="822:917" ph="{...}" />
+            <marker date="1503985619881" expanded="true" signature="1020:1082" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ProjectsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="149" column="21" lean-forward="true" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
+          <folding>
+            <marker date="1502744266602" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1502744266602" expanded="false" signature="226:1228" ph="..." />
+            <marker date="1502744266602" expanded="true" signature="1230:1258" ph="/**...*/" />
+            <marker date="1502744266602" expanded="true" signature="1260:1304" ph="@{...}" />
+            <marker date="1502744266602" expanded="true" signature="1502:9152" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ComponentsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="109" column="20" lean-forward="false" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>cmdb</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.1.9</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
