@@ -2,7 +2,7 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-    "name": "generic-node-s2i-build",
+    "name": "cmdb-build",
     "annotations": {
       "description": "",
       "tags": "nodejs",
@@ -10,7 +10,7 @@
     }
   },
   "labels": {
-    "template": "nodejs"
+    "template": "cmdb"
   },
   "objects": [
   {
@@ -629,20 +629,6 @@
 ],
   "parameters": [
     {
-      "name": "FRONTEND_NAME",
-      "displayName": "Name",
-      "description": "The name assigned to all of the frontend objects defined in this template.",
-      "required": true,
-      "value": "dmod"
-    },
-	{
-      "name": "DOCUMENT_SERVICE_NAME",
-      "displayName": "Name",
-      "description": "The name assigned to all of the document service objects defined in this template.",
-      "required": true,
-      "value": "document-microservice"
-    },	
-    {
       "name": "S2I_NAMESPACE",
       "displayName": "Namespace",
       "description": "The OpenShift Namespace where the S2I ImageStream resides.",
@@ -652,7 +638,7 @@
       "name": "SOURCE_REPOSITORY_URL",
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
-      "value": "https://github.com/bcgov/csnr-dmod.git"
+      "value": "https://github.com/bcgov/dcts.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",

@@ -1,0 +1,530 @@
+{
+  "kind": "Template",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "CMDB-demo",
+    "annotations": {
+      "description": "",
+      "tags": "nodejs",
+      "iconClass": "icon-nodejs"
+    }
+  },
+  "labels": {
+    "template": "nodejs"
+  },
+  "objects": [
+  {
+      "kind": "PersistentVolumeClaim",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "orientdb-config"
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "1Gi"
+          }
+        }
+      }
+    },
+	{
+      "kind": "PersistentVolumeClaim",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "orientdb-data"
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "5Gi"
+          }
+        }
+      }
+    },
+	{
+      "kind": "PersistentVolumeClaim",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "orientdb-backup"
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "5Gi"
+          }
+        }
+      }
+    },
+  {
+    "kind": "DeploymentConfig",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "orientdb",
+        "generation": 1,
+        "creationTimestamp": null,
+        "labels": {
+            "app": "orientdb"
+        },
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp"
+        }
+    },
+    "spec": {
+        "strategy": {
+            "type": "Recreate",
+            "recreateParams": {
+                "timeoutSeconds": 600
+            },
+            "resources": {},
+            "activeDeadlineSeconds": 21600
+        },
+        "triggers": [
+            {
+                "type": "ImageChange",
+                "imageChangeParams": {
+                    "automatic": true,
+                    "containerNames": [
+                        "orientdb"
+                    ],
+                    "from": {
+                        "kind": "ImageStreamTag",
+                        "namespace": "${APP_IMAGE_NAMESPACE}",
+                        "name": "orientdb:latest"
+                    }
+                }
+            },
+            {
+                "type": "ConfigChange"
+            }
+        ],
+        "replicas": 1,
+        "test": false,
+        "selector": {
+            "app": "orientdb",
+            "deploymentconfig": "orientdb"
+        },
+        "template": {
+            "metadata": {
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "orientdb",
+                    "deploymentconfig": "orientdb"
+                },
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                }
+            },
+            "spec": {
+                "volumes": [
+                    {
+                        "name": "orientdb-config",
+                        "persistentVolumeClaim": {
+                            "claimName": "orientdb-config"
+                        }
+                    },
+                    {
+                        "name": "orientdb-data",
+                        "persistentVolumeClaim": {
+                            "claimName": "orientdb-data"
+                        }
+                    },
+                    {
+                        "name": "orientdb-backup",
+                        "persistentVolumeClaim": {
+                            "claimName": "orientdb-backup"
+                        }
+                    }
+                ],
+                "containers": [
+                    {
+                        "name": "orientdb",
+                        "image": "172.50.0.2:5000/csnr-dmod-tools/orientdb@sha256:075ba377c15293fe3c4de28da7ca65958cdd389dc374a70ffb426e11f00716a5",
+                        "ports": [
+                            {
+                                "containerPort": 2480,
+                                "protocol": "TCP"
+                            },
+                            {
+                                "containerPort": 2424,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "env": [
+                            {
+                                "name": "ORIENTDB_ROOT_PASSWORD",
+                                "value": "nrscmdb"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "6Gi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "1Gi"
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "name": "orientdb-config",
+                                "mountPath": "/orientdb/config"
+                            },
+                            {
+                                "name": "orientdb-data",
+                                "mountPath": "/orientdb/databases"
+                            },
+                            {
+                                "name": "orientdb-backup",
+                                "mountPath": "/orientdb/backup"
+                            }
+                        ],
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "IfNotPresent"
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 30,
+                "dnsPolicy": "ClusterFirst",
+                "securityContext": {},
+                "schedulerName": "default-scheduler"
+            }
+        }
+    },
+    "status": {
+        "latestVersion": 0,
+        "observedGeneration": 0,
+        "replicas": 0,
+        "updatedReplicas": 0,
+        "availableReplicas": 0,
+        "unavailableReplicas": 0
+    }
+},
+{
+    "kind": "DeploymentConfig",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "cmdb",
+        "generation": 1,
+        "creationTimestamp": null,
+        "labels": {
+            "app": "cmdb"
+        },
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftWebConsole"
+        }
+    },
+    "spec": {
+        "strategy": {
+            "type": "Rolling",
+            "rollingParams": {
+                "updatePeriodSeconds": 1,
+                "intervalSeconds": 1,
+                "timeoutSeconds": 600,
+                "maxUnavailable": "25%",
+                "maxSurge": "25%"
+            },
+            "resources": {},
+            "activeDeadlineSeconds": 21600
+        },
+        "triggers": [
+            {
+                "type": "ImageChange",
+                "imageChangeParams": {
+                    "automatic": true,
+                    "containerNames": [
+                        "cmdb"
+                    ],
+                    "from": {
+                        "kind": "ImageStreamTag",
+                        "namespace": "${APP_IMAGE_NAMESPACE}",
+                        "name": "cmdb:latest"
+                    }
+                }
+            },
+            {
+                "type": "ConfigChange"
+            }
+        ],
+        "replicas": 1,
+        "test": false,
+        "selector": {
+            "deploymentconfig": "cmdb"
+        },
+        "template": {
+            "metadata": {
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "cmdb",
+                    "deploymentconfig": "cmdb"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "cmdb",
+                        "image": "172.50.0.2:5000/csnr-dmod-tools/cmdb@sha256:f07a471be7a803552abe49063018515793ad83010530802266d295664847c2b5",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "env": [
+                            {
+                                "name": "ORIENTDB_SERVER",
+                                "value": "orientdb"
+                            },
+                            {
+                                "name": "ORIENTDB_USER",
+                                "value": "root"
+                            },
+                            {
+                                "name": "ORIENTDB_PASS",
+                                "value": "admin"
+                            },
+                            {
+                                "name": "ORIENTDB_NAME",
+                                "value": "cmdb"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "2",
+                                "memory": "4Gi"
+                            },
+                            "requests": {
+                                "cpu": "10m",
+                                "memory": "512Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "Always"
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 30,
+                "dnsPolicy": "ClusterFirst",
+                "securityContext": {},
+                "schedulerName": "default-scheduler"
+            }
+        }
+    },
+    "status": {
+        "latestVersion": 0,
+        "observedGeneration": 0,
+        "replicas": 0,
+        "updatedReplicas": 0,
+        "availableReplicas": 0,
+        "unavailableReplicas": 0
+    }
+},
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "cmdb",
+        "creationTimestamp": null,
+        "labels": {
+            "app": "cmdb"
+        },
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftWebConsole"
+        }
+    },
+    "spec": {
+        "ports": [
+            {
+                "name": "8080-tcp",
+                "protocol": "TCP",
+                "port": 8080,
+                "targetPort": 8080
+            }
+        ],
+        "selector": {
+            "deploymentconfig": "cmdb"
+        },
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+    },
+    "status": {
+        "loadBalancer": {}
+    }
+},
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "orientdb",
+        "creationTimestamp": null,
+        "labels": {
+            "app": "orientdb"
+        },
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp"
+        }
+    },
+    "spec": {
+        "ports": [
+            {
+                "name": "2424-tcp",
+                "protocol": "TCP",
+                "port": 2424,
+                "targetPort": 2424
+            }
+        ],
+        "selector": {
+            "app": "orientdb"
+        },
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+    },
+    "status": {
+        "loadBalancer": {}
+    }
+},
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "orientdb-web",
+        "creationTimestamp": null,
+        "labels": {
+            "app": "orientdb"
+        },
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp"
+        }
+    },
+    "spec": {
+        "ports": [
+            {
+                "name": "2480-tcp",
+                "protocol": "TCP",
+                "port": 2480,
+                "targetPort": 2480
+            }
+        ],
+        "selector": {
+            "app": "orientdb"
+        },
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+    },
+    "status": {
+        "loadBalancer": {}
+    }
+},
+{
+    "kind": "Route",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "cmdb-rest",
+        "creationTimestamp": null
+    },
+    "spec": {
+        "host": "rest-nrs-cmdb${APPLICATION_DOMAIN}",
+        "to": {
+            "kind": "Service",
+            "name": "cmdb",
+            "weight": 100
+        },
+        "port": {
+            "targetPort": "8080-tcp"
+        },
+        "tls": {
+            "termination": "edge"
+        },
+        "wildcardPolicy": "None"
+    },
+    "status": {
+        "ingress": [
+            {
+                "host": "rest-nrs-cmdb${APPLICATION_DOMAIN}",
+                "routerName": "router",
+                "conditions": [
+                    {
+                        "type": "Admitted",
+                        "status": "True",
+                        "lastTransitionTime": "2017-09-21T16:00:34Z"
+                    }
+                ],
+                "wildcardPolicy": "None"
+            }
+        ]
+    }
+},
+{
+    "kind": "Route",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "nrs-cmdb",
+        "creationTimestamp": null
+    },
+    "spec": {
+        "host": "rest-nrs-cmdb${APPLICATION_DOMAIN}",
+        "to": {
+            "kind": "Service",
+            "name": "orientdb-web",
+            "weight": 100
+        },
+        "port": {
+            "targetPort": "8080-tcp"
+        },
+        "tls": {
+            "termination": "edge"
+        },
+        "wildcardPolicy": "None"
+    },
+    "status": {
+        "ingress": [
+            {
+                "host": "nrs-cmdb${APPLICATION_DOMAIN}",
+                "routerName": "router",
+                "conditions": [
+                    {
+                        "type": "Admitted",
+                        "status": "True",
+                        "lastTransitionTime": "2017-09-21T16:00:34Z"
+                    }
+                ],
+                "wildcardPolicy": "None"
+            }
+        ]
+    }
+}
+],
+  "parameters": [
+    {
+      "name": "APP_IMAGE_NAMESPACE",
+      "displayName": "App Image Namespace",
+      "required": true,
+      "description": "The OpenShift Namespace where the ImageStream resides.",
+      "value": "cmdb-tools"
+    },
+	{
+      "name": "APP_IMAGE_NAMESPACE",
+      "displayName": "App Image Namespace",
+      "required": true,
+      "description": "The OpenShift Namespace where the ImageStream resides.",
+      "value": "cmdb-tools"
+    },
+	{
+      "name": "APPLICATION_DOMAIN",
+      "displayName": "Application Domain",
+      "description": "The suffix for the application routes.  Defaults to .pathfinder.gov.bc.ca",
+      "value": ".pathfinder.gov.bc.ca"
+    }
+	]
+}
