@@ -12,10 +12,8 @@ import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphNoTx;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,7 +39,7 @@ public class PropertiesController {
     @Autowired
     private OrientGraphFactory factory;
 
-    @RequestMapping("/getvalue")
+    @RequestMapping(value="/value", method = RequestMethod.GET)
     /**
      * Returns the value for a given property.
      */
@@ -57,6 +55,11 @@ public class PropertiesController {
         String result = "";
         // get a graph database connection
         OrientGraphNoTx graph =  factory.getNoTx();
+
+        if (graph.getVertexType("PropertyValue") == null)
+        {
+            graph.createVertexType("PropertyValue");
+        }
 
         // if all properties are present, get the single value.
 
@@ -134,8 +137,103 @@ public class PropertiesController {
         // shutdown the graph database connection
         graph.shutdown();
         return result;
-    }    
-    
-    
-    
+    }
+
+    @RequestMapping(value = "/value", method = RequestMethod.PUT)
+    /**
+     * Returns the value for a given property.
+     */
+
+    public String SetValue(
+            @RequestParam(required = true) String project,
+            @RequestParam(required = true) String component,
+            @RequestParam(required = true) String environment,
+            @RequestParam(required = true) String property,
+            @RequestParam(required = true) String value
+    )
+    {
+        gson = new Gson();
+        String result = "";
+        // get a graph database connection
+        OrientGraphNoTx graph =  factory.getNoTx();
+
+        if (graph.getVertexType("PropertyValue") == null)
+        {
+            graph.createVertexType("PropertyValue");
+        }
+
+        // if all properties are present, get the single value.
+
+        // construct the property key
+        String ComponentKey = project.toUpperCase() + "_" + component.toUpperCase();
+        String executionEnvironmentKey = ComponentKey + "_" + environment.toUpperCase();
+        String propertyKey = executionEnvironmentKey + "_" + property.toUpperCase();
+
+        // get a list of matching values
+        Iterable<Vertex> properties = graph.getVertices("PropertyValue.key", propertyKey);
+        OrientVertex vProperty = null;
+        if (properties != null && properties.iterator().hasNext()) {
+            vProperty = (OrientVertex) properties.iterator().next();
+            // set the value
+            vProperty.setProperty("value", value);
+        }
+
+        // shutdown the graph database connection
+        graph.shutdown();
+
+        return gson.toJson(vProperty);
+    }
+
+    @RequestMapping(value = "/value", method = RequestMethod.POST)
+    /**
+     * Returns the value for a given property.
+     */
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public String CreateValue(
+            @RequestParam(required = true) String project,
+            @RequestParam(required = true) String component,
+            @RequestParam(required = true) String environment,
+            @RequestParam(required = true) String property,
+            @RequestParam(required = true) String value
+    ) {
+        gson = new Gson();
+        String result = "";
+        // get a graph database connection
+        OrientGraphNoTx graph = factory.getNoTx();
+
+        if (graph.getVertexType("PropertyValue") == null)
+        {
+            graph.createVertexType("PropertyValue");
+        }
+
+        // if all properties are present, get the single value.
+
+        // construct the property key
+        String ComponentKey = project.toUpperCase() + "_" + component.toUpperCase();
+        String executionEnvironmentKey = ComponentKey + "_" + environment.toUpperCase();
+        String propertyKey = executionEnvironmentKey + "_" + property.toUpperCase();
+
+        // get a list of matching values
+        Iterable<Vertex> properties = graph.getVertices("PropertyValue.key", propertyKey);
+        OrientVertex vProperty = null;
+        if (properties != null && properties.iterator().hasNext()) {
+            vProperty = (OrientVertex) properties.iterator().next();
+            // set the value
+            vProperty.setProperty("value", value);
+        } else // create the property.
+        {
+            vProperty = graph.addVertex("class:PropertyValue" );
+            vProperty.setProperty("key", propertyKey);
+            vProperty.setProperty("value", value);
+        }
+
+        // shutdown the graph database connection
+        graph.shutdown();
+
+        return gson.toJson(vProperty);
+    }
+
+
+
 }

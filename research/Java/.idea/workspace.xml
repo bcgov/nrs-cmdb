@@ -15,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ComponentsController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ComponentsController.java">
+      <file leaf-file-name="PropertiesController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="109" column="20" lean-forward="false" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
+            <state relative-caret-position="4746">
+              <caret line="230" column="34" lean-forward="false" selection-start-line="230" selection-start-column="34" selection-end-line="230" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,7 +55,6 @@
         <option value="$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.8.RELEASE/spring-beans-4.3.8.RELEASE.jar!/org/springframework/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.class" />
         <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ApplicationsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ProjectsController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/model/Component.java" />
         <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/model/Project.java" />
         <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/ApplicationStarter.java" />
@@ -63,6 +62,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ComponentsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java" />
       </list>
     </option>
   </component>
@@ -73,10 +73,11 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="1088" />
-    <option name="height" value="1038" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1929" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1058" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -109,8 +110,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -192,8 +195,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -384,10 +385,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1088" height="1038" extended-state="0" />
+    <frame x="-1929" y="-9" width="1938" height="1058" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32690355" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -397,13 +399,12 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14018692" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34791666" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271795" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -465,10 +466,38 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ComponentsController.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2037">
+          <caret line="109" column="20" lean-forward="false" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
+          <folding>
+            <marker date="1503986220328" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1503986220328" expanded="true" signature="226:705" ph="..." />
+            <marker date="1503986220328" expanded="true" signature="707:735" ph="/**...*/" />
+            <marker date="1503986220328" expanded="true" signature="737:783" ph="@{...}" />
+            <marker date="1503986220328" expanded="true" signature="991:1107" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="1208:1681" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="1810:2157" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="2164:2216" ph="/**...*/" />
+            <marker date="1503986220328" expanded="true" signature="2286:5758" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="3060:3128" ph="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ComponentsController.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2289">
           <caret line="109" column="20" lean-forward="false" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1503986220328" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1503986220328" expanded="true" signature="226:705" ph="..." />
+            <marker date="1503986220328" expanded="true" signature="707:735" ph="/**...*/" />
+            <marker date="1503986220328" expanded="true" signature="737:783" ph="@{...}" />
+            <marker date="1503986220328" expanded="true" signature="991:1107" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="1208:1681" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="1810:2157" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="2164:2216" ph="/**...*/" />
+            <marker date="1503986220328" expanded="true" signature="2286:5758" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="3060:3128" ph="//..." />
           </folding>
         </state>
       </provider>
@@ -478,12 +507,7 @@
         <state relative-caret-position="2373">
           <caret line="136" column="9" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="136" selection-end-column="9" />
           <folding>
-            <marker date="1503562478929" expanded="false" signature="0:184" ph="/.../" />
-            <marker date="1503562478929" expanded="true" signature="226:1053" ph="..." />
-            <marker date="1503562478929" expanded="true" signature="1055:1083" ph="/**...*/" />
-            <marker date="1503562478929" expanded="true" signature="1085:1131" ph="@{...}" />
-            <marker date="1503562478929" expanded="true" signature="1630:4651" ph="{...}" />
-            <marker date="1503562478929" expanded="false" signature="2922:2937" ph="&lt;~&gt;" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -522,12 +546,7 @@
         <state relative-caret-position="1911">
           <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding>
-            <marker date="1503562478929" expanded="false" signature="0:184" ph="/.../" />
-            <marker date="1503562478929" expanded="true" signature="226:1053" ph="..." />
-            <marker date="1503562478929" expanded="true" signature="1055:1083" ph="/**...*/" />
-            <marker date="1503562478929" expanded="true" signature="1085:1131" ph="@{...}" />
-            <marker date="1503562478929" expanded="true" signature="1630:4651" ph="{...}" />
-            <marker date="1503562478929" expanded="false" signature="2922:2937" ph="&lt;~&gt;" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -537,12 +556,7 @@
         <state relative-caret-position="630">
           <caret line="51" column="9" lean-forward="true" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
           <folding>
-            <marker date="1503562478929" expanded="false" signature="0:184" ph="/.../" />
-            <marker date="1503562478929" expanded="true" signature="226:1053" ph="..." />
-            <marker date="1503562478929" expanded="true" signature="1055:1083" ph="/**...*/" />
-            <marker date="1503562478929" expanded="true" signature="1085:1131" ph="@{...}" />
-            <marker date="1503562478929" expanded="true" signature="1630:4651" ph="{...}" />
-            <marker date="1503562478929" expanded="false" signature="2922:2937" ph="&lt;~&gt;" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -552,12 +566,7 @@
         <state relative-caret-position="1155">
           <caret line="76" column="4" lean-forward="false" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
           <folding>
-            <marker date="1503562478929" expanded="false" signature="0:184" ph="/.../" />
-            <marker date="1503562478929" expanded="true" signature="226:1053" ph="..." />
-            <marker date="1503562478929" expanded="true" signature="1055:1083" ph="/**...*/" />
-            <marker date="1503562478929" expanded="true" signature="1085:1131" ph="@{...}" />
-            <marker date="1503562478929" expanded="true" signature="1630:4651" ph="{...}" />
-            <marker date="1503562478929" expanded="false" signature="2922:2937" ph="&lt;~&gt;" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -704,21 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-          <folding>
-            <marker date="1503562478929" expanded="false" signature="0:184" ph="/.../" />
-            <marker date="1503562478929" expanded="true" signature="226:1053" ph="..." />
-            <marker date="1503562478929" expanded="true" signature="1055:1083" ph="/**...*/" />
-            <marker date="1503562478929" expanded="true" signature="1085:1131" ph="@{...}" />
-            <marker date="1503562478929" expanded="true" signature="1630:4651" ph="{...}" />
-            <marker date="1503562478929" expanded="false" signature="2922:2937" ph="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/CmdbConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="743">
@@ -849,7 +843,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ProjectsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
+        <state relative-caret-position="-857">
           <caret line="149" column="21" lean-forward="true" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
           <folding>
             <marker date="1502744266602" expanded="false" signature="0:184" ph="/.../" />
@@ -863,8 +857,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/ComponentsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="109" column="20" lean-forward="false" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
+        <state relative-caret-position="326">
+          <caret line="53" column="43" lean-forward="true" selection-start-line="43" selection-start-column="8" selection-end-line="53" selection-end-column="43" />
+          <folding>
+            <marker date="1503986220328" expanded="false" signature="0:184" ph="/.../" />
+            <marker date="1503986220328" expanded="true" signature="226:705" ph="..." />
+            <marker date="1503986220328" expanded="true" signature="707:735" ph="/**...*/" />
+            <marker date="1503986220328" expanded="true" signature="737:783" ph="@{...}" />
+            <marker date="1503986220328" expanded="true" signature="991:1107" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="1208:1681" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="1810:2157" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="2164:2216" ph="/**...*/" />
+            <marker date="1503986220328" expanded="true" signature="2286:5758" ph="{...}" />
+            <marker date="1503986220328" expanded="true" signature="3060:3128" ph="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/bc/gov/nrs/cmdb/rest/PropertiesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4746">
+          <caret line="230" column="34" lean-forward="false" selection-start-line="230" selection-start-column="34" selection-end-line="230" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
