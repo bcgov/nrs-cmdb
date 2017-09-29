@@ -1,35 +1,3 @@
-connect remote:localhost/cmdb user pass
-
-DELETE VERTEX V
-DELETE EDGE E
-
-
-CREATE CLASS Component IF NOT EXISTS EXTENDS V 
-
-CREATE CLASS ExecutionEnvironment IF NOT EXISTS EXTENDS V 
-CREATE CLASS Artifact IF NOT EXISTS EXTENDS V 
-CREATE CLASS DeploymentSpec IF NOT EXISTS EXTENDS V 
-CREATE CLASS DeviceNode IF NOT EXISTS EXTENDS V 
-CREATE CLASS DeploymentSpec IF NOT EXISTS EXTENDS V 
-CREATE CLASS PropertyValue IF NOT EXISTS EXTENDS V 
-CREATE CLASS PropertyName IF NOT EXISTS EXTENDS V 
-CREATE CLASS LogicalComponent IF NOT EXISTS EXTENDS Component 
-CREATE CLASS PhysicalComponent IF NOT EXISTS EXTENDS Component 
-CREATE CLASS LogicalExecutionEnvironment IF NOT EXISTS EXTENDS ExecutionEnvironment 
-CREATE CLASS PhysicalExecutionEnvironment IF NOT EXISTS EXTENDS ExecutionEnvironment 
-CREATE CLASS LogicalDeploymentSpec IF NOT EXISTS EXTENDS DeploymentSpec 
-CREATE CLASS PhysicalDeploymentSpec IF NOT EXISTS EXTENDS DeploymentSpec
-
-CREATE CLASS Delivery_Instance IF NOT EXISTS EXTENDS E 
-CREATE CLASS Manifested_By IF NOT EXISTS EXTENDS E 
-CREATE CLASS Deployed_To IF NOT EXISTS EXTENDS E 
-CREATE CLASS Instance_Of IF NOT EXISTS EXTENDS E 
-CREATE CLASS Has IF NOT EXISTS EXTENDS E 
-CREATE CLASS Hosted_By IF NOT EXISTS EXTENDS E 
-
-CREATE CLASS DatabaseConnection IF NOT EXISTS EXTENDS V 
-CREATE CLASS Connects_To IF NOT EXISTS EXTENDS E 
-
 -- Infrastructure
 CREATE VERTEX DeviceNode SET key = "BLEWIT"
 
@@ -95,9 +63,7 @@ CREATE EDGE Has FROM (SELECT FROM COMPONENT WHERE key = "DELIVERY_TITAN") TO (Se
 CREATE EDGE Instance_Of FROM (Select FROM DeploymentSpec WHERE key = "TITAN_DEPLOYMENTSPEC") TO (Select FROM DeploymentSpec WHERE key = "DELIVERY_TITAN_DEPLOYMENTSPEC")
 CREATE EDGE Deployed_To FROM (Select FROM Artifact WHERE key = "TITAN_EAR") TO (Select FROM DeploymentSpec WHERE key = "TITAN_DEPLOYMENTSPEC")
 
-
 -- Database connection
-
 
 CREATE VERTEX  DatabaseConnection SET key = "Conn1", user = "titan_proxy", schema = "titan", database_instance = "OSDB", database_server = "Cluster1"
 
@@ -107,17 +73,14 @@ CREATE EDGE Manifested_By FROM (SELECT FROM LogicalComponent WHERE key = "TITAN"
 
 CREATE EDGE Connects_To FROM (SELECT FROM LogicalComponent WHERE key = "TITAN_DB") TO (SELECT FROM DatabaseConnection WHERE key = "Conn1")
 
-
 --	What if Titan is down?
--- select * from `LogicalComponent` where key = "TITAN"
+--  SELECT FROM (TRAVERSE outE(), outV() from (SELECT FROM `LogicalComponent` where key = "TITAN"))
 
 --	What is the impact of the Delivery Instance being down?
--- select * from `LogicalComponent` where key = "DELIVERY_TITAN"
+--  SELECT FROM (TRAVERSE outE(), outV() from (SELECT FROM `LogicalComponent` where key = "DELIVERY_TITAN")) 
 
 --	What is the impact of the delivery servers down?
--- SELECT FROM ExecutionEnvironment WHERE key = "DELIVERY_TC01"
+--  SELECT FROM (TRAVERSE outE(), outV() from (SELECT FROM `ExecutionEnvironment` WHERE key = "DELIVERY_TC01"))
+
 
 --	What is the impact of the cluster being down?
-
-
-
