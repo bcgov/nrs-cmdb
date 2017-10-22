@@ -12,9 +12,7 @@ import org.springframework.context.annotation.Configuration;
 // This application shell is based on the reference OpenShift application available at
 //  https://blog.openshift.com/using-spring-boot-on-openshift/
 
-@Configuration
-@ComponentScan
-@EnableAutoConfiguration
+
 @SpringBootApplication
 
 public class Application extends SpringBootServletInitializer {
