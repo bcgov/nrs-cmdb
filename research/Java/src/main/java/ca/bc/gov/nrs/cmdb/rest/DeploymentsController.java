@@ -160,11 +160,10 @@ public class DeploymentsController {
     }
 
     @PostMapping("/{deploymentId}/finish")
-    public ResponseEntity<String> FinishDeployment(@PathVariable("deploymentId") String deploymentId, @RequestParam(required = true) Boolean success, @RequestBody DeploymentSpecificationPlan input )
+    public ResponseEntity<String> FinishDeployment(@PathVariable("deploymentId") String deploymentId, @RequestParam(required = true) Boolean success, @RequestBody DeploymentSpecificationPlan deploymentSpecificationPlan )
     {
         OrientGraphNoTx graph =  factory.getNoTx();
 
-        DeploymentSpecificationPlan deploymentSpecificationPlan = new DeploymentSpecificationPlan();
 
         if (graph.getVertexType("DeploymentSpecificationPlan") == null)
         {
@@ -177,6 +176,15 @@ public class DeploymentsController {
         if (vDeploymentSpecificationPlan != null) {
             // update the status
             vDeploymentSpecificationPlan.setProperty("deployment-successful", success.toString());
+            // update other properties from the input data.
+            if (deploymentSpecificationPlan.getSystem() != null) { vDeploymentSpecificationPlan.setProperty("System", deploymentSpecificationPlan.getSystem()); }
+            if (deploymentSpecificationPlan.getSystem() != null) { vDeploymentSpecificationPlan.setProperty("SymbolicName", deploymentSpecificationPlan.getSymbolicName()); }
+            if (deploymentSpecificationPlan.getSystem() != null) { vDeploymentSpecificationPlan.setProperty("Description", deploymentSpecificationPlan.getDescription()); }
+            if (deploymentSpecificationPlan.getSystem() != null) { vDeploymentSpecificationPlan.setProperty("Vendor", deploymentSpecificationPlan.getVendor()); }
+            if (deploymentSpecificationPlan.getSystem() != null) { vDeploymentSpecificationPlan.setProperty("Vendor-Contact", deploymentSpecificationPlan.getVendorContact()); }
+            if (deploymentSpecificationPlan.getSystem() != null) { vDeploymentSpecificationPlan.setProperty("Version", deploymentSpecificationPlan.getVendor()); }
+            // TODO - determine if Imports / Exports are Vertexes or properties.
+
             deploymentSpecificationPlan.setDeployed(success);
 
             deploymentSpecificationPlan.setKey((String)vDeploymentSpecificationPlan.getProperty("key"));

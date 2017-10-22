@@ -2,6 +2,7 @@ package ca.bc.gov.nrs.cmdb.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -12,37 +13,17 @@ import java.util.Objects;
 //@Vertex
 public class DeploymentSpecificationPlan {
 
-  private String key = null;
 
 
   /**
    * A system-generated unique identifier for a module
    **/
+  private String key = null;
+
   public DeploymentSpecificationPlan key(String key) {
     this.key = key;
     return this;
   }
-
-  /* Deployment status
-   * null - no attempt to deploy yet
-   * true - deployed successfully
-   * false - not deployed
-   */
-  private Boolean deployed = null;
-
-  // The Artifact specified as a parameter when the DeploymentSpecificationPlan was created.
-  private Artifact artifact;
-
-  /**
-   * The name of the application.
-   **/
-  private String name = null;
-
-  public DeploymentSpecificationPlan name(String name) {
-    this.name = name;
-    return this;
-  }
-
 
   @JsonProperty("key")
   public String getKey() {
@@ -52,6 +33,13 @@ public class DeploymentSpecificationPlan {
     this.key = key;
   }
 
+  /* Deployment status
+ * null - no attempt to deploy yet
+ * true - deployed successfully
+ * false - not deployed
+ */
+  private Boolean deployed = null;
+
   @JsonProperty("deployed")
   public Boolean getDeployed() {
     return deployed;
@@ -60,17 +48,123 @@ public class DeploymentSpecificationPlan {
     this.deployed = deployed;
   }
 
+  // The Artifact specified as a parameter when the DeploymentSpecificationPlan was created.
+  private Artifact artifact;
+
   @JsonProperty("artifact")
   public Artifact getArtifact() {return artifact;}
   public void setArtifact(Artifact artifact) {this.artifact = artifact;}
 
-  @JsonProperty("name")
+  /**
+   * The name of the application.
+   **/
+  private String name = null;
+  public DeploymentSpecificationPlan name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  @JsonProperty("Name")
   public String getName() {
     return name;
   }
   public void setName(String name) {
     this.name = name;
   }
+
+  /**
+   * System
+   */
+  private String system = null;
+
+  @JsonProperty("System")
+  public String getSystem() {
+    return system;
+  }
+  public void setSystem(String system) {
+    this.system = system;
+  }
+
+  /**
+   * SymbolicName
+   */
+  private String symbolicName = null;
+  @JsonProperty("SymbolicName")
+  public String getSymbolicName() {
+    return symbolicName;
+  }
+  public void setSymbolicName(String symbolicName) {
+    this.symbolicName = symbolicName;
+  }
+
+
+  /**
+   * Description
+   */
+  private String description = null;
+  @JsonProperty("Description")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  /**
+   * Vendor
+   */
+  private String vendor = null;
+  @JsonProperty("Vendor")
+  public String getVendor() {
+    return vendor;
+  }
+  public void setVendor(String vendor) {
+    this.vendor = vendor;
+  }
+
+  /**
+   * Vendor-Contact
+   */
+  private String vendorContact = null;
+  @JsonProperty("Vendor-Contact")
+  public String getVendorContact() {
+    return vendorContact;
+  }
+  public void setVendorContact(String vendorContact) {
+    this.vendorContact = vendorContact;
+  }
+
+  /**
+   * Version
+   */
+  private String version = null;
+  @JsonProperty("version")
+  public String getVersion() {
+    return version;
+  }
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
+  private Export[] export = null;
+  @JsonProperty("Export")
+  public Export[] getExport() {
+    return export;
+  }
+  public void setExport(Export[] export) {
+    this.export = export;
+  }
+
+  private Import[] imports = null;
+  @JsonProperty("Import")
+  public Import[] getImport() {
+    return imports;
+  }
+  public void setImport(Import[] imports) {
+    this.imports = imports;
+  }
+
+
 
 
   @Override
