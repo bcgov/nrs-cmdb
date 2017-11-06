@@ -13,7 +13,7 @@ import java.util.Objects;
 //@Vertex
 public class Artifact {
   private static Gson gson;
-//  @Id
+
   private String key = null;
 //  @Property("module_name")
   private String name = null;
@@ -45,6 +45,100 @@ public class Artifact {
   }
   public void setName(String name) {
     this.name = name;
+  }
+
+  /**
+   * Short Name
+   */
+  private String shortName = null;
+  @JsonProperty("shortName")
+  public String getShortName() {
+    return shortName;
+  }
+  public void setShortName(String shortName) {
+    this.shortName = shortName;
+  }
+
+  /**
+   * System
+   */
+  private String system = null;
+  @JsonProperty("system")
+  public String getSystem() {
+    return system;
+  }
+  public void setSystem(String system) {
+    this.system = system;
+  }
+
+  /**
+   * Description
+   */
+  private String description = null;
+  @JsonProperty("description")
+  public String getDescription() { return description;  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  /**
+   * Url
+   */
+  private String url = null;
+  @JsonProperty("url")
+  public String getUrl() { return url;  }
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  /**
+   * Vendor
+   */
+  private String vendor = null;
+  @JsonProperty("vendor")
+  public String getVendor() { return vendor;  }
+  public void setVendor(String vendor) {
+    this.vendor = vendor;
+  }
+
+  /**
+   * VendorContact
+   */
+  private String vendorContact = null;
+  @JsonProperty("vendorContact")
+  public String getVendorContact() { return vendorContact;  }
+  public void setVendorContact(String vendorContact) {
+    this.vendorContact = vendorContact;
+  }
+
+  /**
+   * Version
+   */
+  private String version = null;
+  @JsonProperty("version")
+  public String getVersion() { return version;  }
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
+  /**
+   * DeploymentSpec
+   */
+  private DeploymentSpec deploymentSpec = null;
+  @JsonProperty("deploymentSpec")
+  public DeploymentSpec getDeploymentSpec() { return deploymentSpec;  }
+  public void setDeploymentSpec(DeploymentSpec deploymentSpec) {
+    this.deploymentSpec = deploymentSpec;
+  }
+
+  /**
+   * RuntimeSpec
+   */
+  private RuntimeSpec runtimeSpec = null;
+  @JsonProperty("runtimeSpec")
+  public String getRuntimeSpec() { return version;  }
+  public void setRuntimeSpec(RuntimeSpec runtimeSpec) {
+    this.runtimeSpec = runtimeSpec;
   }
 
 
