@@ -3,6 +3,7 @@ package ca.bc.gov.nrs.cmdb.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -121,27 +122,24 @@ public class Artifact {
     this.version = version;
   }
 
-  /**
-   * DeploymentSpec
-   */
-  private DeploymentSpec deploymentSpec = null;
-  @JsonProperty("deploymentSpec")
-  public DeploymentSpec getDeploymentSpec() { return deploymentSpec;  }
-  public void setDeploymentSpec(DeploymentSpec deploymentSpec) {
-    this.deploymentSpec = deploymentSpec;
+
+  private Export[] provides = null;
+  @JsonProperty("Provides")
+  public Export[] getProvides() {
+    return provides;
+  }
+  public void setProvides(Export[] provides) {
+    this.provides = provides;
   }
 
-  /**
-   * RuntimeSpec
-   */
-  private RuntimeSpec runtimeSpec = null;
-  @JsonProperty("runtimeSpec")
-  public String getRuntimeSpec() { return version;  }
-  public void setRuntimeSpec(RuntimeSpec runtimeSpec) {
-    this.runtimeSpec = runtimeSpec;
+  private HashMap<String, Object> requires = null;
+  @JsonProperty("Requires")
+  public HashMap<String, Object>  getRequires() {
+    return requires;
   }
-
-
+  public void setRequires (HashMap<String, Object>  requires) {
+    this.requires = requires;
+  }
 
   @Override
   public boolean equals(Object o) {
