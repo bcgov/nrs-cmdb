@@ -13,10 +13,9 @@ package ca.bc.gov.nrs.cmdb;
 
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
-import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+//import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.data.orient.object.OrientObjectDatabaseFactory;
 import org.springframework.data.orient.commons.core.OrientTransactionManager;
 import org.springframework.data.orient.object.OrientObjectTemplate;
@@ -26,12 +25,14 @@ import org.springframework.data.orient.object.OrientObjectTemplate;
 
 public class CmdbConfiguration {
 
+    /* only needed for local testing.
     @Bean
     public EmbeddedServletContainerFactory servletContainer() {
         TomcatEmbeddedServletContainerFactory factory =
                 new TomcatEmbeddedServletContainerFactory();
         return factory;
     }
+    */
 
     @Bean
     public com.tinkerpop.blueprints.impls.orient.OrientGraphFactory factory() {
