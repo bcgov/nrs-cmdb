@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>NRS CMDB Demo</title>
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+$(function() {
+
+$('#getDemoArtifact').click(function() {
+        // get the demo content.
+    $.get( "artifacts/getDemoArtifact", "", function( data ) {
+    var formatted = JSON.stringify(data, undefined, 2);
+        $( "#artifactUpload" ).html( formatted );
+    }, 'json');
+
+    });
+
+$('#clearAllArtifacts').click(function() {
+    // clear all artifacts
+    $("#outputArtifactUpload").html( "Clearing artifacts\n" );
+
+    $.get( "artifacts/resetArtifacts", "", function( data ) {
+
+        var dataAsString = JSON.stringify(data, undefined, 2);
+        var output = $("#outputArtifactUpload").text() + "Success!\nResponse:\n" + dataAsString;
+        $("#outputArtifactUpload").html( output );
+
+    }, 'json');
+
+    });
+
+$('#getSample').click(function() {
+    // get the example content.
+    $.get( "artifacts/getTemplate", "", function( data ) {
+    var formatted = JSON.stringify(data, undefined, 2);
+        $( "#artifact" ).html( formatted );
+    }, 'json');
+});
+
+    // deployment start
+    $("#deploymentStartForm").submit(function(e) {
+        //prevent Default functionality
+        e.preventDefault();
+
+        //get the action-url of the form
+        var actionurl = e.currentTarget.action;
+
+        $("#outputStart").html( 'Sending POST request to ' + actionurl + "\n" );
+
+        $.ajax({
+                url: actionurl,
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: $("#artifact").val(),
+                success: function(data) {
+                    var dataAsString = JSON.stringify(data, undefined, 2);
+                    var output = $("#outputStart").text() + "\nResponse:\n" + dataAsString;
+                    $("#outputStart").html( output );
+
+                    // set the deployment key
+                    $("#deploymentId").val(data.key);
+                    $("#deploymentSpec").html(dataAsString);
+                },
+                error: function (xhr, textStatus, thrownError) {
+                    var output = $("#outputStart").text() + "ERROR!\nResponse:\n" + textStatus + "\n" + thrownError;
+                    $("#outputStart").html( output );
+
+                }
+        });
+    });
+
+    // artifactUpload
+    $("#artifactUploadForm").submit(function(e) {
+        //prevent Default functionality
+        e.preventDefault();
+
+        //get the action-url of the form
+        var actionurl = e.currentTarget.action;
+
+        $("#outputArtifactUpload").html( 'Sending POST request to ' + actionurl + "\n" );
+
+        $.ajax({
+                url: actionurl,
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: $("#artifactUpload").text(),
+                success: function(data) {
+                    var dataAsString = JSON.stringify(data, undefined, 2);
+                    var output = $("#outputArtifactUpload").text() + "Success!\nResponse:\n" + dataAsString;
+                    $("#outputArtifactUpload").html( output );
+
+                },
+                error: function (xhr, textStatus, thrownError) {
+                    var output = $("#outputStart").text() + "ERROR!\nResponse:\n" + textStatus + "\n" + thrownError;
+                    $("#outputStart").html( output );
+
+                }
+        });
+    });
+
+    // deployment finish
+    $("#deploymentFinishForm").submit(function(e) {
+
+        //prevent Default functionality
+        e.preventDefault();
+
+        var deploymentId = $("#deploymentId").val();
+        var successvalue = $("input[name='successvalue']:checked").val()
+
+        //get the action-url of the form
+        var actionurl = e.currentTarget.action + '/' + deploymentId + '/finish?success=' + successvalue ;
+
+        $("#outputFinish").html( 'Sending POST request to ' + actionurl + "\n" );
+
+        $.ajax({
+                url: actionurl,
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: $("#artifactUpload").text(),
+                success: function(data) {
+                    var dataAsString = JSON.stringify(data, undefined, 2);
+                    var output = $("#outputFinish").text() + "Success!\nResponse:\n" + dataAsString;
+                    $("#outputFinish").html( output );
+
+
+                },
+                error: function (xhr, textStatus, thrownError) {
+                    var output = $("#outputFinish").text() + "ERROR!\nResponse:\n" + textStatus + "\n" + thrownError;
+                    $("#outputFinish").html( output );
+
+                }
+        });
+
+    });
+
+});
+
+
+
+</script>
+<h1>NRS CMDB Demo</h1>
+<hr/>
+<h2>Deployment Start </h2>
+<form id="deploymentStartForm" method="post" action="deployments/start">
+    <table border="0">
+        <td>
+            <h4>JSON List of Artifacts:</h4>
+
+            <textarea id="artifact" rows="20" cols="80" name="artifact"></textarea>
+        </td>
+        <td>
+            <h4>Output:</h4>
+            <textarea id="outputStart" rows="20" cols="80" name="outputStart"></textarea><br>
+
+        </td>
+    </table>
+    <input type="button" id="getSample" value="Get Sample">
+    <input type="submit" value="Start Deployment">
+</form>
+
+
+<hr/>
+
+<h2>Upload Data</h2>
+<form id="artifactUploadForm" method="post" action="upload">
+    <table border="0">
+        <td>
+            <h4>Requirement JSON:</h4>
+
+            <textarea id="artifactUpload" rows="20" cols="80" name="requirement"></textarea>
+        </td>
+        <td>
+            <h4>Output:</h4>
+            <textarea id="outputArtifactUpload" rows="20" cols="80" name="outputArtifactUpload"></textarea><br>
+
+        </td>
+    </table>
+    <input type="submit" value="Upload Data">
+    <input type="button" id="getDemoArtifact" value="Get Demo Data">
+    <input type="button" id="clearAllArtifacts" value="Clear All Artifacts">
+</form>
+<hr/>
+
+
+<h2>Deployment Finish</h2>
+
+<form id="deploymentFinishForm" method="post" action="deployments">
+
+            <h4>Deployment ID</h4>
+            <input type="text" id="deploymentId" name="deploymentId" size="40">
+            <h4>Was the deployment successful?</h4>
+            <input type="radio" name="successvalue" value="True" checked>True <input type="radio" name="successvalue" value="False">False
+    <table border="0">
+        <td>
+            <h4>Deployment Spec JSON:</h4>
+            <textarea id="deploymentSpec" rows="20" cols="80" name="deploymentSpec"></textarea><br>
+        </td>
+        <td>
+            <h4>Output:</h4>
+            <textarea id="outputFinish" rows="20" cols="80" name="outputFinish"></textarea><br>
+
+        </td>
+    </table>
+    <input type="submit" value="Finish Deployment">
+</form>
+
+<hr/>
+
+<form id="reset" method="get" action="artifacts/resetTemplate" >
+    <input type="submit" value="Reset Artifact Template">
+</form>
+
+</body>
+</html>

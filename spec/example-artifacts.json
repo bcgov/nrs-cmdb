@@ -1,29 +1,34 @@
-{
-  "artifacts": [
+[
     {
       "system": "OFM",
       "name": "com.oracle.ofm",
       "description": "Oracle's complete family of application infrastructure products—from the #1 Java application server to SOA and enterprise portals—are integrated with Oracle Applications and technologies to speed implementation and lower the cost of management and change. Best-of-breed offerings and unique hot-pluggable capabilities provide a foundation for innovation and extend the business value of existing investments.",
       "vendor": "Oracle",
       "version": "11.1.1",
-      "provides": [{
+      "provides": [
+	    {
+	      "name": "server",
           "interface": "com.oracle.weblogic",
-          "version": "10.3.6",
-          "layer":"server"
-        },{
-          "interface": "com.oracle.forms",
-          "version": "???",
-          "layer":"server"
-        },{
-          "interface": "com.oracle.reports",
-          "version": "???",
-          "layer":"server"
-        },{
+          "version": "10.3.6"         
+		},
+		{
+		  "name": "server":
+		  "interface": "com.oracle.forms",
+		  "version": "???",
+		  "layer":"server"
+		},
+		{
+		  "server": {
+            "interface": "com.oracle.reports",
+            "version": "???",          
+          }
+		},
+		{
+		  "name" : "server",
           "interface": "com.oracle.weblogic.admin",
-          "version": "10.3.6",
-          "layer":"server",
-          "attributes": ["url"]
-        }
+          "version": "10.3.6",          
+          "attributes": { "url" : "example.url" }
+		}
       ],
       "requires": {
         "host": {
@@ -38,9 +43,9 @@
       "name": "ca.bc.gov.nrs.titan.nrs-titan-ds",
       "version": "1.0.0",
       "provides": [
+	    "server" :
         {
-          "interface": "ca.bc.gov.nrs.titan.nrs-titan-ds",
-          "layer":"server"
+          "interface": "ca.bc.gov.nrs.titan.nrs-titan-ds"          
         }
       ],
       "requires": {
@@ -60,14 +65,15 @@
           "quantifier": "?",
           "scope": "deployment"
         }
-      }
+      }	  
     },{
       "system": "TITAN",
       "name": "ca.bc.gov.nrs.titan.nrs-titan-api",
       "version": "1.0.0",
-      "provides": [{
-          "interface": "ca.bc.gov.nrs.titan.nrs-titan-rest-ear",
-          "layer":"server"
+      "provides": [
+	    "server":
+	    {
+          "interface": "ca.bc.gov.nrs.titan.nrs-titan-rest-ear",        
         }
       ],
       "requires": {
@@ -96,6 +102,10 @@
       "system": "TITAN",
       "name": "ca.bc.gov.nrs.titan.nrs-titan-ui",
       "version": "1.0.0",
+	  "provides": ["server":{
+          "interface": "ca.bc.gov.nrs.titan.nrs-titan-ui"          
+        ]
+      },
       "requires": {
         "ui-route": {
           "interface": "ca.bc.gov.nrs.titan.nrs-titan-ui-route",
@@ -112,12 +122,6 @@
           "selector":{"name":"com.oracle.weblogic.credential.deployer"},
           "scope": "deployment"
         }
-      },
-      "provides": [{
-          "interface": "ca.bc.gov.nrs.titan.nrs-titan-ui",
-          "layer":"server"
-        }
-      ]
+      }      
     }
-  ]
-}
+]
