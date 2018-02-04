@@ -1,76 +1,52 @@
 package ca.bc.gov.nrs.cmdb;
 
 import ca.bc.gov.nrs.cmdb.model.Artifact;
+import ca.bc.gov.nrs.cmdb.model.Node;
 import ca.bc.gov.nrs.cmdb.model.RequirementSpec;
 import ca.bc.gov.nrs.cmdb.model.SelectorSpec;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.tinkerpop.blueprints.Direction;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphNoTx;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 import org.apache.commons.lang3.tuple.Pair;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class GraphTools {
 
 
-    public static void updatedRequirements(OrientGraphNoTx graph, String edgeName, OrientVertex vArtifact, HashMap<String, RequirementSpec> requirementHash)
+    public static void updatedRequirements(OrientGraphNoTx graph, String edgeName, OrientVertex vArtifact, JsonObject requirementHash)
     {
         if (requirementHash != null)
         {
             // start by verifying that the RequirementSpec exists.
             CreateVertexTypeIfNotExists( graph, "RequirementSpec");
 
-            for (String requirementType : requirementHash.keySet())
+            // loop through the set of requirements.
+            Set<Map.Entry<String,JsonElement>> requirements = requirementHash.entrySet();
+
+            for (Map.Entry<String,JsonElement> requirement: requirements)
             {
-                RequirementSpec requirementSpec = requirementHash.get(requirementType);
-                OrientVertex vRequirementSpec = CreateVertexIfNotExists (graph, "RequirementSpec", requirementSpec.getKey(requirementType));
-                // Set properties.
-                safeVertexPropertySet(vRequirementSpec, "quantifier", requirementSpec.getQuantifier());
-                safeVertexPropertySet(vRequirementSpec, "scope", requirementSpec.getScope());
-                safeVertexPropertySet(vRequirementSpec, "interface", requirementSpec.getInterface());
-                safeVertexPropertySet(vRequirementSpec, "version", requirementSpec.getVersion());
-
-                // add the expand vector.
-
-                // create an edge.
-                CreateEdgeIfNotExists(graph,vArtifact,vRequirementSpec, edgeName);
-            }
-        }
-    }
-
-    public static void updatedRequirements(OrientGraphNoTx graph, String edgeName, OrientVertex vArtifact, ArrayList<HashMap<String, RequirementSpec>> requirements)
-    {
-        if (requirements != null && requirements.size() > 0)
-        {
-            // start by verifying that the RequirementSpec exists.
-            CreateVertexTypeIfNotExists( graph, "RequirementSpec");
-
-            for (HashMap<String, RequirementSpec> item : requirements)
-            {
-                for (String requirementType : item.keySet())
+                String key = UUID.randomUUID().toString();
+                OrientVertex vRequirementSpec = CreateVertexIfNotExists (graph, "RequirementSpec", key);
+                safeVertexPropertySet(vRequirementSpec, "type", requirement.getKey());
+                // now add all of the other properties.
+                JsonObject requirementProperties = (JsonObject) requirement.getValue();
+                Set<Map.Entry<String,JsonElement>> properties = requirementProperties.entrySet();
+                for (Map.Entry<String,JsonElement> property: properties)
                 {
-                    RequirementSpec requirementSpec = item.get(requirementType);
-                    OrientVertex vRequirementSpec = CreateVertexIfNotExists (graph, "RequirementSpec", requirementSpec.getKey(requirementType));
-
-                    // Set properties.
-                    safeVertexPropertySet(vRequirementSpec, "quantifier", requirementSpec.getQuantifier());
-                    safeVertexPropertySet(vRequirementSpec, "scope", requirementSpec.getScope());
-                    safeVertexPropertySet(vRequirementSpec, "interface", requirementSpec.getInterface());
-                    safeVertexPropertySet(vRequirementSpec, "version", requirementSpec.getVersion());
-
-                    // add the expand vector.
-
-                    // create an edge.
-                    CreateEdgeIfNotExists(graph,vArtifact,vRequirementSpec, edgeName);
+                    safeVertexPropertySet(vRequirementSpec, property.getKey(), property.getValue().getAsString());
                 }
+                // create an edge linking the artifact.
+                CreateEdgeIfNotExists(graph,vArtifact,vRequirementSpec, edgeName);
 
             }
         }
     }
-
 
 
     public static void safeVertexPropertySet (OrientVertex vertex, String propertyName, String propertyValue)
@@ -81,6 +57,59 @@ public class GraphTools {
         }
     }
 
+
+    public static void createLinkedVertex (OrientGraphNoTx graph, OrientVertex vertex, String propertyName, JsonObject jsonObject)
+    {
+        if (jsonObject != null)
+        {
+            // create the linked vertex.
+            OrientVertex vNew = graph.addVertex("class:" + propertyName);
+            vertex.addEdge("has", vNew);
+            // now add all of the element properties to the new object.
+            Set<Map.Entry<String,JsonElement>> attributes = jsonObject.entrySet();
+
+            for (Map.Entry<String,JsonElement> attribute: attributes)
+            {
+                JsonElement element = attribute.getValue();
+                // add the attribute to the object.
+                String key = attribute.getKey();
+                if (element.isJsonPrimitive())
+                {
+                    String value = element.getAsString();
+                    safeVertexPropertySet(vNew, key, value);
+                } else if (element.isJsonObject())
+                {
+                    createLinkedVertex(graph, vNew, key, element.getAsJsonObject());
+                } else if (element.isJsonArray())
+                {
+                    JsonArray items = element.getAsJsonArray();
+                    String values = "";
+                    for (JsonElement item : items)
+                    {
+                        if (item.isJsonObject())
+                        {
+                            createLinkedVertex(graph, vNew, key, item.getAsJsonObject());
+                        }
+                        else if (item.isJsonPrimitive())
+                        {
+                            if (values.length() > 0)
+                            {
+                                values += ",";
+                            }
+                            values += item.getAsString();
+                        }
+                    }
+                    if (values.length() > 0)
+                    {
+                        safeVertexPropertySet(vNew, key, values);
+                    }
+                }
+            }
+        }
+    }
+
+
+
     public static OrientVertex CreateArtifactVertex (OrientGraphNoTx graph, Artifact artifact)
     {
         // create the item in the graph database.
@@ -88,7 +117,6 @@ public class GraphTools {
         vArtifact.setProperty("key", artifact.getKey());
         vArtifact.setProperty("name", artifact.getName());
         safeVertexPropertySet(vArtifact, "system",artifact.getSystem());
-
 
         safeVertexPropertySet(vArtifact,"shortName",artifact.getShortName());
         safeVertexPropertySet(vArtifact,"description",artifact.getDescription());
@@ -104,6 +132,62 @@ public class GraphTools {
 
         return vArtifact;
     }
+
+    public static void ProcessAttribute (OrientGraphNoTx graph, OrientVertex vNode, Map.Entry<String,JsonElement> attribute)
+    {
+        JsonElement element = attribute.getValue();
+        // add the attribute to the object.
+        String key = attribute.getKey();
+        if (element.isJsonPrimitive())
+        {
+            String value = element.getAsString();
+            safeVertexPropertySet(vNode, key, value);
+        } else if (element.isJsonObject())
+        {
+            createLinkedVertex(graph, vNode, key, element.getAsJsonObject());
+        } else if (element.isJsonArray())
+        {
+            JsonArray items = element.getAsJsonArray();
+            String values = "";
+            for (JsonElement item : items)
+            {
+                if (item.isJsonObject())
+                {
+                    createLinkedVertex(graph, vNode, key, item.getAsJsonObject());
+                }
+                else if (item.isJsonPrimitive())
+                {
+                    if (values.length() > 0)
+                    {
+                        values += ",";
+                    }
+                    values += item.getAsString();
+                }
+            }
+            if (values.length() > 0)
+            {
+                safeVertexPropertySet(vNode, key, values);
+            }
+        }
+    }
+
+    public static OrientVertex CreateNodeVertex (OrientGraphNoTx graph, Node node)
+    {
+        // create the item in the graph database.
+        OrientVertex vNode = graph.addVertex("class:Node");
+
+        safeVertexPropertySet(vNode, "key", node.getKey());
+        safeVertexPropertySet(vNode, "name", node.getName());
+
+        Set<Map.Entry<String,JsonElement>> attributes = node.getAttributes().entrySet();
+
+        for (Map.Entry<String,JsonElement> attribute: attributes) {
+            ProcessAttribute(graph, vNode, attribute);
+        }
+
+        return vNode;
+    }
+
 
     public static void CreateVertexTypeIfNotExists(OrientGraphNoTx graph, String name)
     {
@@ -153,7 +237,7 @@ public class GraphTools {
     }
 
 
-    public static RequirementSpec HaveRequirement (OrientGraphNoTx graph, String requirementType, RequirementSpec requirementSpec)
+    public static JsonObject HaveRequirement (OrientGraphNoTx graph, Map.Entry<String,JsonElement> requirement)
     {
         Boolean result = false;
         // search the graph to determine if there is a suitable requirementSpec.
@@ -161,8 +245,9 @@ public class GraphTools {
         OrientVertex vResult = null;
         // lookup the RequirementSpec.
 
+        JsonObject requirementSpec = requirement.getValue().getAsJsonObject();
 
-        Iterable<Vertex> Components = graph.getVertices("RequirementSpec.key", requirementSpec.getKey(requirementType));
+        Iterable<Vertex> Components = graph.getVertices("RequirementSpec.type", requirement.getKey());
         if (Components != null && Components.iterator().hasNext())
         {
             vResult = (OrientVertex) Components.iterator().next();
@@ -176,9 +261,10 @@ public class GraphTools {
                 result = true;
 
                 // update matches.
-                HashMap<String,String> matches = new HashMap<String,String>();
-                matches.put ("node-key",vProvider.getProperty("key").toString());
-                requirementSpec.setMatches(matches);
+                JsonObject matches = new JsonObject();
+                matches.add ("node-key", new JsonPrimitive(vProvider.getProperty("key").toString()));
+
+                requirementSpec.add("matches", matches);
 
                 // update expand.  expand is an array of strings.
                 
