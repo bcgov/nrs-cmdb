@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -71,6 +72,8 @@ public class ArtifactsController {
         return "ok";
     }
 
+
+
     @RequestMapping("/getTemplate")
     public String GetTemplate()
     {
@@ -79,71 +82,18 @@ public class ArtifactsController {
 
         OrientGraphNoTx graph =  factory.getNoTx();
         OrientVertex vArtifact = null;
-        Artifact artifact = new Artifact();
-
-
 
         if (graph.getVertexType("Artifact") == null)
         {
             graph.createVertexType("Artifact");
         }
 
-        Iterable<Vertex> Artifacts = graph.getVertices("Artifact.name", defaultName);
-        if (Artifacts != null && Artifacts.iterator().hasNext())
+        Artifact artifact = GetArtifactFromGraph(graph, defaultName);
+
+
+        if (artifact == null) // create the demo item.
         {
-            vArtifact = (OrientVertex) Artifacts.iterator().next();
-            artifact.setKey((String)vArtifact.getProperty("key"));
-            artifact.setName((String)vArtifact.getProperty("name"));
-            artifact.setSystem((String)vArtifact.getProperty("system"));
-            artifact.setShortName((String)vArtifact.getProperty("shortName"));
-            artifact.setDescription((String)vArtifact.getProperty("description"));
-            artifact.setUrl((String)vArtifact.getProperty("url"));
-            artifact.setVendor((String)vArtifact.getProperty("vendor"));
-            artifact.setVendorContact((String)vArtifact.getProperty("vendorContact"));
-            artifact.setVersion((String)vArtifact.getProperty("version"));
-
-            // construct the requires.
-
-            SelectorSpec selector = new SelectorSpec();
-            selector.setName("com.oracle.weblogic.admin");
-            selector.setVersion("[10,11)" );
-
-
-            RequirementSpec host = new RequirementSpec();
-
-
-            host.setQuantifier("?");
-            host.setScope("deployment");
-            String [] expandArray = new String[1];
-            expandArray[0]="url";
-            host.setExpand(expandArray);
-
-            RequirementSpec credential = new RequirementSpec();
-
-            SelectorSpec credentialSelector = new SelectorSpec();
-            credentialSelector.setName ("com.oracle.weblogic.credential.deployer");
-
-
-            credential.setQuantifier("?");
-            credential.setScope("deployment");
-
-            JsonObject requiresHash = new JsonObject();
-
-            // convert the host object to a JsonObject
-            JsonObject hostObject = gson.fromJson( gson.toJson(host), JsonObject.class);
-
-            requiresHash.add("host", hostObject);
-
-            // convert the credential object to a JsonObject
-            JsonObject credentialObject = gson.fromJson( gson.toJson(credential), JsonObject.class);
-
-
-            requiresHash.add ("deployerCredentials", credentialObject);
-            artifact.setRequires(requiresHash);
-
-        }
-        else // create the demo item.
-        {
+            artifact = new Artifact();
             // create the view model
             artifact.setKey(UUID.randomUUID().toString());
             artifact.setName(defaultName);
@@ -169,6 +119,12 @@ public class ArtifactsController {
             // convert the host object to a JsonObject
             JsonObject hostObject = gson.fromJson( gson.toJson(requirementSpec), JsonObject.class);
 
+            JsonObject selectorObject = new JsonObject();
+            selectorObject.add("os_family", new JsonPrimitive("SunOS"));
+            selectorObject.add("os_name", new JsonPrimitive("SunOS"));
+
+            hostObject.add( "selector", selectorObject );
+
             requiresHash.add ("host", hostObject);
 
             artifact.setRequires(requiresHash);
@@ -180,8 +136,8 @@ public class ArtifactsController {
             serverSpec1.setVersion("10.3.6");
 
             RequirementSpec serverSpec2 = new RequirementSpec();
-            serverSpec1.setInterface("com.oracle.forms");
-            serverSpec1.setVersion("???");
+            serverSpec2.setInterface("com.oracle.forms");
+            serverSpec2.setVersion("???");
 
             JsonObject providesList = new JsonObject();
 
@@ -195,13 +151,12 @@ public class ArtifactsController {
 
             // create the vertex.
             CreateArtifactVertex (graph, artifact);
+            // ensure we have all data from the graph.
+            artifact = GetArtifactFromGraph(graph, defaultName);
         }
 
         graph.shutdown();
 
-        // return the result
-        //return result.toJson();//gson.toJson(result);
-        ObjectMapper mapper = new ObjectMapper();
         String result = null;
         try {
 
@@ -230,17 +185,17 @@ public class ArtifactsController {
 
         // create the view model
         artifact.setKey(UUID.randomUUID().toString());
-        artifact.setName("BEAVERTON");
+        artifact.setName("ZEUS");
         artifact.setVersion("11.1.1");
 
-            // create a requirement.
+        // create a requirement.
 
-            RequirementSpec requirementSpec = new RequirementSpec();
-            requirementSpec.setQuantifier("?");
+        RequirementSpec requirementSpec = new RequirementSpec();
+        requirementSpec.setQuantifier("?");
 
-            String[] expand = new String[1];
+        String[] expand = new String[1];
 
-            requirementSpec.setScope("deployment");
+        requirementSpec.setScope("deployment");
 
         // construct the requires.
 
@@ -268,6 +223,13 @@ public class ArtifactsController {
 
         JsonObject providesList = new JsonObject();
         JsonObject hostObject = gson.fromJson( gson.toJson(host), JsonObject.class);
+
+        JsonObject selectorObject = new JsonObject();
+        selectorObject.add("os_family", new JsonPrimitive("SunOS"));
+        selectorObject.add("os_name", new JsonPrimitive("SunOS"));
+
+        hostObject.add( "selector", selectorObject );
+
         JsonObject credentialObject = gson.fromJson( gson.toJson(credential), JsonObject.class);
 
         providesList.add ("host", hostObject);
@@ -288,10 +250,10 @@ public class ArtifactsController {
         String result = gson.toJson(uploadSpec);
         return result;
 
-        }
+    }
 
 
-        @PostMapping
+    @PostMapping
     public String CreateArtifact(@RequestBody Artifact artifact)
     {
         OrientGraphNoTx graph =  factory.getNoTx();
