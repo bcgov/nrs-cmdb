@@ -6,11 +6,11 @@
 package ca.bc.gov.nrs.cmdb.rest;
 
 import ca.bc.gov.nrs.cmdb.model.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.tinkerpop.blueprints.Direction;
+import com.tinkerpop.blueprints.Edge;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.impls.orient.OrientEdge;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
@@ -81,7 +81,7 @@ public class DeploymentsController {
             for (Map.Entry<String,JsonElement> requirement: requirements)
             {
                 // determine if we have a match for the requirement spec.
-                JsonObject haveRequirement = HaveRequirement (graph, requirement);
+                JsonObject haveRequirement = haveRequirement(graph, requirement);
 
                 if (haveRequirement == null)
                 {
@@ -125,31 +125,109 @@ public class DeploymentsController {
             deploymentSpecificationPlan.setArtifacts(artifacts);
             deploymentSpecificationPlan.setDeployed(false);
             deploymentSpecificationPlan.setVersion (version);
+            deploymentSpecificationPlan.setSystem("OFM");
 
             if (graph.getVertexType("DeploymentSpecificationPlan") == null)
             {
                 graph.createVertexType("DeploymentSpecificationPlan");
             }
 
+            if (graph.getVertexType("ArtifactDeploymentSpec") == null)
+            {
+                graph.createVertexType("ArtifactDeploymentSpec");
+            }
+
+            if (graph.getVertexType("System") == null)
+            {
+                graph.createVertexType("System");
+            }
+
+            if (graph.getVertexType("ComponentEnvironment") == null)
+            {
+                graph.createVertexType("ComponentEnvironment");
+            }
+
+            if (graph.getVertexType("Environment") == null)
+            {
+                graph.createVertexType("Environment");
+            }
+
             OrientVertex vDeploymentSpecificationPlan = graph.addVertex("class:DeploymentSpecificationPlan" );
             vDeploymentSpecificationPlan.setProperty("key", deploymentSpecificationPlan.getKey());
             vDeploymentSpecificationPlan.setProperty("name", deploymentSpecificationPlan.getName());
+            vDeploymentSpecificationPlan.setProperty("environment", deploymentSpecificationPlan.getComponentEnvironment());
+
+
+            // create the system if it does not exist
+            OrientVertex vSystem = null;
+            Iterable<Vertex> vSystems = graph.getVertices("System.name", deploymentSpecificationPlan.getSystem());
+            if (vSystems != null && vSystems.iterator().hasNext()) {
+                vSystem = (OrientVertex) vSystems.iterator().next();
+            }
+            else
+            {
+                vSystem =graph.addVertex("class:System" );
+                vSystem.setProperty("key", UUID.randomUUID().toString());
+                vSystem.setProperty("name", deploymentSpecificationPlan.getSystem());
+            }
+
+            // create the environment if it does not exist
+            OrientVertex vEnvironment = null;
+            Iterable<Vertex> vEnvironments = graph.getVertices("Environment.name", deploymentSpecificationPlan.getComponentEnvironment());
+            if (vEnvironments != null && vEnvironments.iterator().hasNext()) {
+                vEnvironment = (OrientVertex) vEnvironments.iterator().next();
+            }
+            else
+            {
+                vEnvironment = graph.addVertex("class:Environment" );
+                vEnvironment.setProperty("key", UUID.randomUUID().toString());
+                vEnvironment.setProperty("name", deploymentSpecificationPlan.getComponentEnvironment());
+            }
+
+            createEdgeIfNotExists(graph,vSystem, vEnvironment, "Has");
 
             // update the graph
             for(Artifact input : artifacts) {
+                OrientVertex vArtifactDeploymentSpec = null;
                 OrientVertex vArtifact = null;
                 Iterable<Vertex> vArtifacts = graph.getVertices("Artifact.key", input.getKey());
                 if (vArtifacts != null && vArtifacts.iterator().hasNext()) {
                     vArtifact = (OrientVertex) vArtifacts.iterator().next();
-                    // Add an edge to the Artifact.
+                    // create the Artifact Deployment Spec
+                    vArtifactDeploymentSpec = graph.addVertex("class:ArtifactDeploymentSpec" );
+                    vArtifactDeploymentSpec.setProperty("name", input.getName());
+                    vArtifactDeploymentSpec.setProperty("key", UUID.randomUUID().toString());
 
-                    Iterable<com.tinkerpop.blueprints.Edge> edges = vDeploymentSpecificationPlan.getEdges(vArtifact, Direction.BOTH, "Deploys");
-                    if (edges == null || !edges.iterator().hasNext()) {
-                        graph.addEdge(null, vDeploymentSpecificationPlan, vArtifact, "Deploys");
+
+                    // get the link for the Artifact Version.
+
+                    OrientVertex artifactVersion = getVersionVertexFromArtifactVertex(graph, vArtifact);
+
+
+                    createEdgeIfNotExists(graph,vArtifactDeploymentSpec, artifactVersion, "Using");
+
+
+                    createEdgeIfNotExists(graph,vDeploymentSpecificationPlan, vArtifactDeploymentSpec, "Has");
+
+
+
+                    // create the provides components.
+                    JsonObject provides = input.getProvides();
+                    if (provides != null)
+                    {
+                        createComponentFromRequirement(graph, "Provides", vArtifactDeploymentSpec, provides, deploymentSpecificationPlan.getComponentEnvironment(), vSystem  );
                     }
 
+                    // create the requires components.
+                    JsonObject requires = input.getRequires();
+                    if (requires != null)
+                    {
+                        createRequiresObjects(graph, "Requires", vArtifactDeploymentSpec, requires  );
+                    }
                 }
             }
+
+
             // done with the graph
             graph.shutdown();
 
@@ -191,7 +269,7 @@ public class DeploymentsController {
     @PostMapping("/{deploymentId}/finish")
     public ResponseEntity<String> FinishDeployment(@PathVariable("deploymentId") String deploymentId, @RequestParam(required = true) Boolean success, @RequestBody String rawData )
     {
-        // need to use gson to parse as fasterjackson cannot understand the JsonObject data.
+        // use gson to parse as fasterjackson cannot understand the JsonObject data.
 
         DeploymentSpecificationPlan deploymentSpecificationPlan = gson.fromJson(rawData, DeploymentSpecificationPlan.class);
         OrientGraphNoTx graph =  factory.getNoTx();
@@ -203,60 +281,20 @@ public class DeploymentsController {
         }
 
         // find the associated OrientDb object
-        OrientVertex vDeploymentSpecificationPlan = GetVertex (graph, "DeploymentSpecificationPlan", deploymentId);
+        OrientVertex vDeploymentSpecificationPlan = getVertex(graph, "DeploymentSpecificationPlan", deploymentId);
 
         if (vDeploymentSpecificationPlan != null) {
             // update the status
             vDeploymentSpecificationPlan.setProperty("deployment-successful", success.toString());
-            // update other properties from the input data.
-            if (deploymentSpecificationPlan.getSystem() != null) { vDeploymentSpecificationPlan.setProperty("System", deploymentSpecificationPlan.getSystem()); }
-            if (deploymentSpecificationPlan.getSymbolicName() != null) { vDeploymentSpecificationPlan.setProperty("SymbolicName", deploymentSpecificationPlan.getSymbolicName()); }
-            if (deploymentSpecificationPlan.getDescription() != null) { vDeploymentSpecificationPlan.setProperty("Description", deploymentSpecificationPlan.getDescription()); }
-            if (deploymentSpecificationPlan.getVendor() != null) { vDeploymentSpecificationPlan.setProperty("Vendor", deploymentSpecificationPlan.getVendor()); }
-            if (deploymentSpecificationPlan.getVendorContact() != null) { vDeploymentSpecificationPlan.setProperty("Vendor-Contact", deploymentSpecificationPlan.getVendorContact()); }
-            CreateLinkedVersion(graph, vDeploymentSpecificationPlan, deploymentSpecificationPlan.getVersion());
-            LinkComponentEnvironment(graph,vDeploymentSpecificationPlan, deploymentSpecificationPlan.getComponentEnvironment() );
 
             deploymentSpecificationPlan.setDeployed(success);
 
-            deploymentSpecificationPlan.setKey((String)vDeploymentSpecificationPlan.getProperty("key"));
-            deploymentSpecificationPlan.setName((String)vDeploymentSpecificationPlan.getProperty("name"));
-            // see if there are any edges.
-            Iterable<com.tinkerpop.blueprints.Edge> edges = vDeploymentSpecificationPlan.getEdges( Direction.BOTH, "Deploys");
-            if (edges != null && edges.iterator().hasNext()) {
-                OrientEdge vEdge = (OrientEdge) edges.iterator().next();
-                OrientVertex vArtifact = graph.getVertex( vEdge.getInVertex());
-                Artifact artifact = new Artifact();
-                artifact.setKey((String) vArtifact.getProperty("key"));
-                artifact.setName((String) vArtifact.getProperty("name"));
-                //deploymentSpecificationPlan.setArtifact(artifact);
-            }
+            // remove instance links from Components.
+            cleanupComponentInstanceLink(graph,vDeploymentSpecificationPlan);
 
-            // update artifact matches.
+            // Create a link to Previous deployments.
+            linkPreviousDeployments (graph, vDeploymentSpecificationPlan, deploymentSpecificationPlan);
 
-            Artifact[] artifacts = deploymentSpecificationPlan.getArtifacts();
-
-            for(Artifact input : artifacts) {
-                OrientVertex vArtifact = null;
-
-                JsonObject requirementHash = input.getRequires();
-
-                // loop through the set of requirements.
-                Set<Map.Entry<String, JsonElement>> requirements = requirementHash.entrySet();
-
-                for (Map.Entry<String, JsonElement> requirement : requirements) {
-
-                    JsonObject requirementProperties = (JsonObject) requirement.getValue();
-                    String requirementKey = requirementProperties.get("key").getAsString();
-                    // get matches.
-                    JsonObject matches = requirementProperties.get("matches").getAsJsonObject();
-
-                    String nodeKey = matches.get("node-key").getAsString();
-
-                    UpdateRequirementSpecNodeEdge(graph, requirementKey, nodeKey);
-                }
-
-            }
 
         }
         else
