@@ -12,24 +12,18 @@ import ca.bc.gov.nrs.cmdb.model.SelectorSpec;
 import ca.bc.gov.nrs.cmdb.model.UploadSpec;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.orientechnologies.orient.core.command.OCommandRequest;
 import com.orientechnologies.orient.core.sql.OCommandSQL;
 import com.tinkerpop.blueprints.Vertex;
-import com.tinkerpop.blueprints.impls.orient.OrientGraphCommand;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphNoTx;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
-import java.util.AbstractMap.SimpleImmutableEntry;
 
 import static ca.bc.gov.nrs.cmdb.GraphTools.*;
 
@@ -88,7 +82,7 @@ public class ArtifactsController {
             graph.createVertexType("Artifact");
         }
 
-        Artifact artifact = GetArtifactFromGraph(graph, defaultName);
+        Artifact artifact = getArtifactFromGraph(graph, defaultName);
 
 
         if (artifact == null) // create the demo item.
@@ -150,9 +144,9 @@ public class ArtifactsController {
             artifact.setProvides( providesList );
 
             // create the vertex.
-            CreateArtifactVertex (graph, artifact);
+            createArtifactVertex(graph, artifact);
             // ensure we have all data from the graph.
-            artifact = GetArtifactFromGraph(graph, defaultName);
+            artifact = getArtifactFromGraph(graph, defaultName);
         }
 
         graph.shutdown();
@@ -257,7 +251,7 @@ public class ArtifactsController {
     public String CreateArtifact(@RequestBody Artifact artifact)
     {
         OrientGraphNoTx graph =  factory.getNoTx();
-        CreateArtifactVertex (graph, artifact);
+        createArtifactVertex(graph, artifact);
         graph.shutdown();
         ObjectMapper mapper = new ObjectMapper();
         String result = "";
