@@ -1,15 +1,6 @@
 package ca.bc.gov.nrs.cmdb;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author George
- */
 
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
@@ -59,7 +50,7 @@ public class CmdbConfiguration {
         String orientDBPass = System.getenv("ORIENTDB_PASS");
         String orientDBName = System.getenv("ORIENTDB_NAME");
 
-                factory.setUrl("remote:"+ orientDBServer +"/" + orientDBName);
+        factory.setUrl("remote:"+ orientDBServer +"/" + orientDBName);
         factory.setUsername(orientDBUser);
         factory.setPassword(orientDBPass);
 

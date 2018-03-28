@@ -24,10 +24,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 
-/**
- *
- * @author George
- */
 
 @RestController
 @RequestMapping("/properties")
@@ -233,7 +229,5 @@ public class PropertiesController {
 
         return gson.toJson(vProperty);
     }
-
-
 
 }

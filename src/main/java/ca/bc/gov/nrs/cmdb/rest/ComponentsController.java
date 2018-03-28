@@ -17,11 +17,6 @@ import static ca.bc.gov.nrs.cmdb.GraphTools.createEdgeIfNotExists;
 import static ca.bc.gov.nrs.cmdb.GraphTools.createVertexIfNotExists;
 import static ca.bc.gov.nrs.cmdb.GraphTools.createVertexTypeIfNotExists;
 
-/**
- *
- * @author George
- */
-
 @RestController
 @RequestMapping("/components")
 

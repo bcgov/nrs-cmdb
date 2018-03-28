@@ -12,10 +12,6 @@ import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.*;
 
-/**
- *
- * @author George
- */
 
 @RestController
 @RequestMapping("/schema")
@@ -37,7 +33,6 @@ public class SchemaController {
 
         ObjectMapper mapper = new ObjectMapper();
 
-//        mapper.configure(SerializationConfig.Feature.WRITE_ENUMS_USING_TO_STRING, true);
         SchemaSpec schema = new SchemaSpec();
 
         String result = "";

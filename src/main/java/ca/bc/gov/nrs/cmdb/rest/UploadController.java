@@ -21,11 +21,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.UUID;
 
-/**
- *
- * @author George
- */
-
 @RestController
 @RequestMapping("/upload")
 
