@@ -30,11 +30,6 @@ import java.util.*;
 
 import static ca.bc.gov.nrs.cmdb.GraphTools.*;
 
-/**
- *
- * @author George
- */
-
 @RestController
 @RequestMapping("/deployments")
 
@@ -289,12 +284,8 @@ public class DeploymentsController {
 
             deploymentSpecificationPlan.setDeployed(success);
 
-            // remove instance links from Components.
-            cleanupComponentInstanceLink(graph,vDeploymentSpecificationPlan);
-
-            // Create a link to Previous deployments.
+            // Create a link to Previous deployments.  They will also be cleaned.
             linkPreviousDeployments (graph, vDeploymentSpecificationPlan, deploymentSpecificationPlan);
-
 
         }
         else

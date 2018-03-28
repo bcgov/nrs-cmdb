@@ -27,10 +27,6 @@ import java.util.*;
 
 import static ca.bc.gov.nrs.cmdb.GraphTools.*;
 
-/**
- *
- * @author George
- */
 
 @RestController
 @RequestMapping("/artifacts")
